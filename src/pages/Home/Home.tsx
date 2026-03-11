@@ -5,6 +5,7 @@ import photo from "../../assets/img/temp_profil_3.png";
 import mobile from "../../assets/img/logos/logo-mobile.png";
 import fb from "../../assets/img/logos/logo-fb.png";
 import unreleased from "../../assets/img/logos/logo-unreleased.png";
+import docs from "../../assets/img/logos/logo-docs1.jpg"
 
 function HomePage() {
     return (
@@ -66,6 +67,12 @@ function HomePage() {
                     name="Facebook Social Games"
                     to="portfolio/fb"
                     ariaLabel="to Facebook Social Games section"
+                />
+				<SectionButton
+                    image={docs}
+                    name="Design Work & Analysis"
+                    to="docs/docs"
+                    ariaLabel="to Design Docs section"
                 />
             </div>
         </div>
