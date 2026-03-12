@@ -5,6 +5,8 @@ import { createHashRouter, RouterProvider } from "react-router";
 import HomePage from "./pages/Home/Home.tsx";
 import SectionPage from "./pages/Section/Section.tsx";
 import ProjectPage from "./pages/Project/Project.tsx";
+import DocSectionPage from "./pages/Section/DocSection.tsx";
+import DocProjectPage from "./pages/Project/DocProject.tsx";
 //import NotFoundPage from "./pages/NotFound/NotFound.tsx";
 
 
@@ -24,6 +26,14 @@ const router = createHashRouter([
      {
         path: "/portfolio/:section/:project",
         element: <ProjectPage/>,
+      },
+	  {
+        path: "/docs/:section",
+        element: <DocSectionPage />,
+      },
+     {
+        path: "/docs/:section/:project",
+        element: <DocProjectPage/>,
       },
       //{ path: "*", element: <NotFoundPage /> }, // Route 404
     ],

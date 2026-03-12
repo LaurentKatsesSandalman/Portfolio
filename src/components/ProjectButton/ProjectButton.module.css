@@ -11,6 +11,11 @@
 	text-align: center;
 }
 
+.projectSub{
+    color: var(--secondary-color);
+	text-align: center;
+}
+
 .projectImage{
     aspect-ratio: 1/1;
     width: min(30vw, 200px);
@@ -26,6 +31,10 @@
 }
 
 .projectName{
+    width: min(30vw, 200px);
+}
+
+.projectSub{
     width: min(30vw, 200px);
 }
 
