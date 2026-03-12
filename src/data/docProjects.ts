@@ -1,7 +1,18 @@
-import projectSbu from "../assets/img/projects/super-brawl-universe-21525-1.jpg";
-import projectTdf from "../assets/img/projects/tour-de-france-2020-official-game-11.jpg";
-import projectTdfDesktop from "../assets/img/projects/tour-de-france-2020-official-game-11 - Copie.jpg";
-import projectMgg from "../assets/img/projects/mgg_cover.jpg";
+import projectAlien from "../assets/img/projects/alien.jpg";
+import pdfAlienAnalysis from "../assets/pdf/Crazylabs/AlienAssignment_Q_GameAnalysis.pdf";
+import pdfAlienVipDoc from "../assets/pdf/Crazylabs/AlienAssignment_GDD_VIPStatus.pdf";
+import pdfAlienVipFrame from "../assets/pdf/Crazylabs/AlienAssignment_Wireframes_VIPStatus.pdf";
+import projectRoller from "../assets/img/projects/skyroller.jpg";
+import pdfRollerBreakdown from "../assets/pdf/SkyRoller/SR_Analysis_GameBreakDown.pdf";
+import pdfRollerData from "../assets/pdf/SkyRoller/SR_Data_analysis_rewardedvideos.pdf";
+import pdfRollerDoc from "../assets/pdf/SkyRoller/SR_Analysis_RewardedVideos.pdf";
+import pdfRollerReco from "../assets/pdf/SkyRoller/SR_GDHL_Rewardometer.pdf";
+import projectMonopoly from "../assets/img/projects/monopolygo.png";
+import pdfMonopoly from "../assets/pdf/MonopolyGo/MG!_KPI_HLsocial.pdf";
+import projectBlast from "../assets/img/projects/blast_raiders.jpg";
+import pdfBlast from "../assets/pdf/BlastRaiders/BR_Wireframe_ClanFeatureMainscreen.pptx.pdf";
+import projectRM from "../assets/img/projects/RoyalMatch.png";
+import pdfRM from "../assets/pdf/RoyalMatch/Fortis_Balancing_SimplifiedGameEconomy.pdf";
 
 export const docs = [
     {
@@ -10,56 +21,148 @@ export const docs = [
         desc: "In this section, I share documents I have created in a previous job or for a GD test",
         projects: [
             {
-                name: "Super Brawl Universe",
-                toParam: "sbu",
-                img: projectSbu,
-                alt: "Super Brawl Universe loading page",
-                link: "https://www.youtube.com/embed/5DqP_E5xtQI?si=aC3Hr4A6nuQds22A",
-                projectType: "Mobile Game - Production",
-                role: "Lead Game Designer",
-                place: "Playsoft - Poland - Remote",
-                starting: "2020",
-                desc: [
-                    "A previous launched version already existed",
-                    "As a Lead Game Designer with 2 younger designers, my main task was to change the meta, from one similar to Marvel : Contest of Champions to a new one closer to Looney Tunes World of Mayhem",
-                    "We also enriched the core game with addition of special powers (shield, freeze, etc.)",
+                name: "Alien Invasion (CrazyLabs)",
+                subtitle: "Increase ARPU 30D",
+                toParam: "alien",
+                img: projectAlien,
+                alt: "to Alien Invasion docs",
+                desc: ["One of the requirement of this assignment was to increase ARPU30.",
+					 "To help you understand my proposal, you'll find my analysis of the game as a first doc.", "Then the VIP feature doc and wireframes."],
+                pdf: [
+                    {
+                        pdfTitle: "Game analysis",
+                        pdfDesc: [
+                            "After analysing game loop, monetization, player choices and motivation, I tried to guess what could explain a high drop off for players during the first session.",
+							"My hypothesis involved difficulties to determine what to do next."
+                        ],
+                        pdfLink: pdfAlienAnalysis,
+                        pdfName: "LaurentDurup_AlienInvasion_GameAnalysis.pdf",
+                        pdfHeight: 600,
+                    },
+                    {
+                        pdfTitle: "Feature VIP Status, doc",
+                        pdfDesc: ["VIP Status goal is to increase ARPU 30D, targeting low to middle spenders and non-payers on the edge of converting.",
+							"It grants the player comfort, not a faster progression, and is mentioned in adaptive offers.",],
+                        pdfLink: pdfAlienVipDoc,
+                        pdfName: "LaurentDurup_AlienInvasion_VipStatusDoc.pdf",
+                        pdfHeight: 600,
+                    },
+                    {
+                        pdfTitle: "Feature VIP Status, wireframes",
+                        pdfDesc: ["Please find here the wireframes referenced in the previous document"],
+                        pdfLink: pdfAlienVipFrame,
+                        pdfName:
+                            "LaurentDurup_AlienInvasion_VipStatusWireframes.pdf",
+                        pdfHeight: 600,
+                    },
                 ],
             },
             {
-                name: "Tour de France 2020 & 2021",
-                toParam: "tdf",
-                img: projectTdf,
-				desktopImg:projectTdfDesktop,
-                alt: "Tour de France advertisement sample",
-                link: "https://www.youtube.com/embed/6mb5lzdHihM?si=ufP1O5GeeL9p3fg8",
-                projectType: "Mobile Game - Production & Live Ops",
-                role: "Lead Game Designer",
-                place: "Playsoft - Poland - Remote",
-                starting: "2020",
-                desc: [
-                    "For TDF 2020, a younger GD and I were in charge of the adaptation of TDF 2019. A lot of small things, but the main ones were: addition of a camp, new level-up system, distinction between riders and bikes (previously, bikes were a sub-attribute of riders), addition of a technology tree.",
-                    "For TDF 2021, I designed a slightly different live-ops system and handled all the live-ops, based on existing official competitions (planning, implementation, new communication features…).",
+                name: "Sky Roller (HOMA)",
+                subtitle: "Rewarded videos analysis",
+                toParam: "skyroller",
+                img: projectRoller,
+                alt: "to Sky Roller docs",
+                desc: ["For Sky Roller, I did a game breakdown and a data analysis on rewarded videos.",
+					"Concerning data analysis part, you'll find the rough data analysis directly in the spreadsheet, the structured analysis, and a feature answering one of the issues"],
+                pdf: [
+                    {
+                        pdfTitle: "Game breakdown",
+                        pdfDesc: ["I analysed the first 40 levels to produce this doc.",
+							"I tried to describe everything in details: levels & chapters structure, obstacles list, main meta features, ads types and list.",
+						"It ends with 2 recommendations."],
+                        pdfLink: pdfRollerBreakdown,
+                        pdfName: "LaurentDurup_SkyRoller_GameBreakdown.pdf",
+                        pdfHeight: 600,
+                    },
+					{
+                        pdfTitle: "Data analysis: spreadsheet",
+                        pdfDesc: ["I was given access to a set of data corresponding to all the rewarded videos during the first 7 days.",
+							"I first ranked them, and compared their display rank with their watched rank. I also ranked this result.",
+						"Then I did specific calculations for each type of rewarded video feature, to make meaningful comparisons."],
+                        pdfLink: pdfRollerData,
+                        pdfName: "LaurentDurup_SkyRoller_DataAnalysisSpreadsheet.pdf",
+                        pdfHeight: 600,
+                    },
+                    {
+                        pdfTitle: "Data analysis: doc",
+                        pdfDesc: ["Based on previous doc, I identified 3 important situations that should lead to action.",
+							"For each of them, I highlighted the evidences in the data, and suggested a small feature to address it."],
+                        pdfLink: pdfRollerDoc,
+                        pdfName: "LaurentDurup_SkyRoller_DataAnalysisDoc.pdf",
+                        pdfHeight: 600,
+                    },
+                    {
+                        pdfTitle: "Rewardometer, high level doc",
+                        pdfDesc: ["This is one of the small features I suggested to implement to address specific situations raised by data"],
+                        pdfLink: pdfRollerReco,
+                        pdfName: "LaurentDurup_SkyRoller_RewardometerGDHL.pdf",
+                        pdfHeight: 600,
+                    },
                 ],
             },
             {
-                name: "Mutants: Genetic Gladiators",
-                toParam: "mgg",
-                img: projectMgg,
-                alt: "Mutant Genetic Gladiators advertisement sample",
-                link: "https://www.youtube.com/embed/gpGOVU2-JqM?si=FoQXMB9Bssi_HGLw",
-                projectType: "Mobile Game - Concept to Live Ops",
-                role: "Original Game Designer",
-                place: "Kobojo - France",
-                starting: "2013",
+                name: "MONOPOLY GO! (Scopely)",
+                subtitle: "Social KPIs",
+                toParam: "mgo",
+                img: projectMonopoly,
+                alt: "to MONOPOLY GO! docs",
+                desc: ["The initial question leading to this doc was 'If you were in charge of social features, which KPIs would you monitor and why, and what would be your first features?'"],
+                pdf: [
+                    {
+                        pdfTitle: "Social KPIs High Level",
+                        pdfDesc: ["In the context of a mobile free-to-play game, what does Social or Friends mean?",
+							"Which existing KPIs should we monitor? Which new ones should we create? Why?",
+							"Depending on the first data results, how should we react?"
+						],
+                        pdfLink: pdfMonopoly,
+                        pdfName: "LaurentDurup_MonopolyGo_SocialKPIsHL.pdf",
+                        pdfHeight: 600,
+                    },
+                ],
+            },
+            {
+                name: "Blast Raiders (PlaySoft)",
+                subtitle: "Clan feature UI",
+                toParam: "blast",
+                img: projectBlast,
+                alt: "to Blast Raiders docs",
+                desc: ["I worked on Blast Raiders several years, I created dozens of doc; I chose this one to illustrate a 'live production' situation: clear documentation, evolving to include recent implementations."],
+                pdf: [
+                    {
+                        pdfTitle: "Clan feature UI",
+                        pdfDesc: ["This doc describes with wireframes all the needed screens for clan feature.",
+							"It includes references to our benchmarks, and result (validated screens done by artists) when available"
+						],
+                        pdfLink: pdfBlast,
+                        pdfName:
+                            "LaurentDurup_Blastraiders_ClanFeatureWireframes.pdf",
+                        pdfHeight: 600,
+                    },
+                ],
+            },
+            {
+                name: "Royal Match (Dream Games)",
+                subtitle: "Simplified Game Economy",
+                toParam: "rm",
+                img: projectRM,
+                alt: "to Royal Match docs",
                 desc: [
-                    "MGG is a turn based fighting/breeding game.",
-                    "On this Facebook/Mobile game, I was the main Game Designer and worked on the project from concept to Live Ops.",
-                    "I mainly worked on the FB version, but except some UI adaptation, it was exactly the same game including balancing.",
-                    "The game is still live, more than 10 yrs later!",
-                    "https://play.google.com/store/apps/details?id=com.kobojo.mutants&hl=en",
+                    "For this test, a company asked me to choose a game from a list, and re-create a simplified version of the Game Economy.",
+                    "I chose Royal Match",
+                ],
+                pdf: [
+                    {
+                        pdfTitle: "Simplified Game Economy",
+                        pdfDesc: ["Starting from my assumptions on the game economy, I mapped core values and event planning to estimate average revenue per player level.",
+							"Based on this, I created a progression projection to identify pain points and HC purchase opportunities."],
+                        pdfLink: pdfRM,
+                        pdfName:
+                            "LaurentDurup_RoyalMatch_SimplifiedGameEconomy.pdf",
+                        pdfHeight: 600,
+                    },
                 ],
             },
         ],
-    }
-
+    },
 ];
