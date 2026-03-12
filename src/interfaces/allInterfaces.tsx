@@ -18,3 +18,29 @@ export interface Section {
     desc: string;
     projects: Project[];
 }
+
+export interface DocSection {
+    section: string;
+    toParam: string;
+    desc: string;
+    projects: DocProject[];
+}
+
+export interface DocProject {
+    name: string;
+	company:string;
+	subtitle: string;
+    toParam: string;
+    img: string;
+    alt: string;
+    desc: string[];
+	pdf: pdfBloc[];
+}
+
+export interface pdfBloc {
+    pdfTitle: string;
+	pdfDesc: string[];
+    pdfLink: string;
+    pdfName: string;
+    pdfHeight: number;
+}

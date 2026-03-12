@@ -2,9 +2,9 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
 import { docs } from "../../data/docProjects";
-import ProjectButton from "../../components/ProjectButton/ProjectButton";
 import styles from "./Section.module.css"
 import arrowIcon from "../../assets/icons/arrow.png";
+import DocProjectButton from "../../components/ProjectButton/DocProjectButton";
 
 function DocSectionPage(){
     const{section}=useParams()
@@ -28,11 +28,13 @@ function DocSectionPage(){
         <p className={styles.desc}>{currentSection.desc}</p>
         <div className={styles.projectsList}>
         {currentSection.projects.map((project)=>(
-            <ProjectButton
+            <DocProjectButton
             key={project.toParam}
             to={project.toParam}
             img={project.img}
             name={project.name}
+			company={project.company}
+			subtitle={project.subtitle}
             alt={project.alt}
             />
         ))}

@@ -1,0 +1,9 @@
+.pdfTitle{
+    color: var(--secondary-color);
+	text-align: center;
+	margin-top: 2rem;
+}
+
+.pdfContainer{
+	width: 100%
+}

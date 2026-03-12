@@ -1,18 +1,18 @@
 import projectAlien from "../assets/img/projects/alien.jpg";
-import pdfAlienAnalysis from "../assets/pdf/Crazylabs/AlienAssignment_Q_GameAnalysis.pdf";
-import pdfAlienVipDoc from "../assets/pdf/Crazylabs/AlienAssignment_GDD_VIPStatus.pdf";
-import pdfAlienVipFrame from "../assets/pdf/Crazylabs/AlienAssignment_Wireframes_VIPStatus.pdf";
+import pdfAlienAnalysis from "../assets/pdf/Crazylabs/LaurentDurup_AlienInvasion_GameAnalysis.pdf";
+import pdfAlienVipDoc from "../assets/pdf/Crazylabs/LaurentDurup_AlienInvasion_VipStatusDoc.pdf";
+import pdfAlienVipFrame from "../assets/pdf/Crazylabs/LaurentDurup_AlienInvasion_VipStatusWireframes.pdf";
 import projectRoller from "../assets/img/projects/skyroller.jpg";
-import pdfRollerBreakdown from "../assets/pdf/SkyRoller/SR_Analysis_GameBreakDown.pdf";
-import pdfRollerData from "../assets/pdf/SkyRoller/SR_Data_analysis_rewardedvideos.pdf";
-import pdfRollerDoc from "../assets/pdf/SkyRoller/SR_Analysis_RewardedVideos.pdf";
-import pdfRollerReco from "../assets/pdf/SkyRoller/SR_GDHL_Rewardometer.pdf";
+import pdfRollerBreakdown from "../assets/pdf/SkyRoller/LaurentDurup_SkyRoller_GameBreakdown.pdf";
+import pdfRollerData from "../assets/pdf/SkyRoller/LaurentDurup_SkyRoller_DataAnalysisSpreadsheet.pdf";
+import pdfRollerDoc from "../assets/pdf/SkyRoller/LaurentDurup_SkyRoller_DataAnalysisDoc.pdf";
+import pdfRollerReco from "../assets/pdf/SkyRoller/LaurentDurup_SkyRoller_RewardometerGDHL.pdf";
 import projectMonopoly from "../assets/img/projects/monopolygo.png";
-import pdfMonopoly from "../assets/pdf/MonopolyGo/MG!_KPI_HLsocial.pdf";
+import pdfMonopoly from "../assets/pdf/MonopolyGo/LaurentDurup_MonopolyGo_SocialKPIsHL.pdf";
 import projectBlast from "../assets/img/projects/blast_raiders.jpg";
-import pdfBlast from "../assets/pdf/BlastRaiders/BR_Wireframe_ClanFeatureMainscreen.pptx.pdf";
+import pdfBlast from "../assets/pdf/BlastRaiders/LaurentDurup_Blastraiders_ClanFeatureWireframes.pdf";
 import projectRM from "../assets/img/projects/RoyalMatch.png";
-import pdfRM from "../assets/pdf/RoyalMatch/Fortis_Balancing_SimplifiedGameEconomy.pdf";
+import pdfRM from "../assets/pdf/RoyalMatch/LaurentDurup_RoyalMatch_SimplifiedGameEconomy.pdf";
 
 export const docs = [
     {
@@ -21,23 +21,24 @@ export const docs = [
         desc: "In this section, I share documents I have created in a previous job or for a GD test",
         projects: [
             {
-                name: "Alien Invasion (CrazyLabs)",
+                name: "Alien Invasion",
+				company:"(CrazyLabs)",
                 subtitle: "Increase ARPU 30D",
                 toParam: "alien",
                 img: projectAlien,
                 alt: "to Alien Invasion docs",
-                desc: ["One of the requirement of this assignment was to increase ARPU30.",
-					 "To help you understand my proposal, you'll find my analysis of the game as a first doc.", "Then the VIP feature doc and wireframes."],
+                desc: ["One of the requirement of this assignment was to increase ARPU30. To help you understand my proposal, you'll find my analysis of the game as a first doc, then the VIP feature doc and wireframes.",
+					 ],
                 pdf: [
                     {
                         pdfTitle: "Game analysis",
                         pdfDesc: [
                             "After analysing game loop, monetization, player choices and motivation, I tried to guess what could explain a high drop off for players during the first session.",
-							"My hypothesis involved difficulties to determine what to do next."
+							"My hypothesis involved 'difficulties to determine what to do next'."
                         ],
                         pdfLink: pdfAlienAnalysis,
                         pdfName: "LaurentDurup_AlienInvasion_GameAnalysis.pdf",
-                        pdfHeight: 600,
+                        pdfHeight: 500,
                     },
                     {
                         pdfTitle: "Feature VIP Status, doc",
@@ -45,7 +46,7 @@ export const docs = [
 							"It grants the player comfort, not a faster progression, and is mentioned in adaptive offers.",],
                         pdfLink: pdfAlienVipDoc,
                         pdfName: "LaurentDurup_AlienInvasion_VipStatusDoc.pdf",
-                        pdfHeight: 600,
+                        pdfHeight: 500,
                     },
                     {
                         pdfTitle: "Feature VIP Status, wireframes",
@@ -53,12 +54,13 @@ export const docs = [
                         pdfLink: pdfAlienVipFrame,
                         pdfName:
                             "LaurentDurup_AlienInvasion_VipStatusWireframes.pdf",
-                        pdfHeight: 600,
+                        pdfHeight: 500,
                     },
                 ],
             },
             {
-                name: "Sky Roller (HOMA)",
+                name: "Sky Roller",
+				company:"(HOMA)",
                 subtitle: "Rewarded videos analysis",
                 toParam: "skyroller",
                 img: projectRoller,
@@ -73,7 +75,7 @@ export const docs = [
 						"It ends with 2 recommendations."],
                         pdfLink: pdfRollerBreakdown,
                         pdfName: "LaurentDurup_SkyRoller_GameBreakdown.pdf",
-                        pdfHeight: 600,
+                        pdfHeight: 500,
                     },
 					{
                         pdfTitle: "Data analysis: spreadsheet",
@@ -82,7 +84,7 @@ export const docs = [
 						"Then I did specific calculations for each type of rewarded video feature, to make meaningful comparisons."],
                         pdfLink: pdfRollerData,
                         pdfName: "LaurentDurup_SkyRoller_DataAnalysisSpreadsheet.pdf",
-                        pdfHeight: 600,
+                        pdfHeight: 500,
                     },
                     {
                         pdfTitle: "Data analysis: doc",
@@ -90,19 +92,20 @@ export const docs = [
 							"For each of them, I highlighted the evidences in the data, and suggested a small feature to address it."],
                         pdfLink: pdfRollerDoc,
                         pdfName: "LaurentDurup_SkyRoller_DataAnalysisDoc.pdf",
-                        pdfHeight: 600,
+                        pdfHeight: 500,
                     },
                     {
                         pdfTitle: "Rewardometer, high level doc",
                         pdfDesc: ["This is one of the small features I suggested to implement to address specific situations raised by data"],
                         pdfLink: pdfRollerReco,
                         pdfName: "LaurentDurup_SkyRoller_RewardometerGDHL.pdf",
-                        pdfHeight: 600,
+                        pdfHeight: 500,
                     },
                 ],
             },
             {
-                name: "MONOPOLY GO! (Scopely)",
+                name: "MONOPOLY GO!",
+				company:"(Scopely)",
                 subtitle: "Social KPIs",
                 toParam: "mgo",
                 img: projectMonopoly,
@@ -117,12 +120,13 @@ export const docs = [
 						],
                         pdfLink: pdfMonopoly,
                         pdfName: "LaurentDurup_MonopolyGo_SocialKPIsHL.pdf",
-                        pdfHeight: 600,
+                        pdfHeight: 500,
                     },
                 ],
             },
             {
-                name: "Blast Raiders (PlaySoft)",
+                name: "Blast Raiders",
+				company:"(PlaySoft)",
                 subtitle: "Clan feature UI",
                 toParam: "blast",
                 img: projectBlast,
@@ -137,12 +141,13 @@ export const docs = [
                         pdfLink: pdfBlast,
                         pdfName:
                             "LaurentDurup_Blastraiders_ClanFeatureWireframes.pdf",
-                        pdfHeight: 600,
+                        pdfHeight: 500,
                     },
                 ],
             },
             {
-                name: "Royal Match (Dream Games)",
+                name: "Royal Match",
+				company:"(Dream Games)",
                 subtitle: "Simplified Game Economy",
                 toParam: "rm",
                 img: projectRM,
@@ -159,7 +164,7 @@ export const docs = [
                         pdfLink: pdfRM,
                         pdfName:
                             "LaurentDurup_RoyalMatch_SimplifiedGameEconomy.pdf",
-                        pdfHeight: 600,
+                        pdfHeight: 500,
                     },
                 ],
             },
