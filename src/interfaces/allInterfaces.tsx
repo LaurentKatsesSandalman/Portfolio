@@ -41,6 +41,5 @@ export interface pdfBloc {
     pdfTitle: string;
 	pdfDesc: string[];
     pdfLink: string;
-    pdfName: string;
     pdfHeight: number;
 }
