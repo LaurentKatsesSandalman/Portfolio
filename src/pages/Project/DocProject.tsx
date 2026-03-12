@@ -59,7 +59,6 @@ function DocProjectPage() {
                         pdfTitle={item.pdfTitle}
                         pdfDesc={item.pdfDesc}
                         pdfLink={item.pdfLink}
-                        pdfName={item.pdfName}
                         pdfHeight={item.pdfHeight}
                     />
                 ))}
