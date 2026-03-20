@@ -85,7 +85,8 @@ function ProjectPage() {
                         <div className={styles.h3container}>
                             <h3>In a few words...</h3>
                             {currentProject.desc.map((item, index) => (
-                               (item.startsWith("http")?<a className={styles.anchor} href={item} target="_blank" key={index}>{item}</a> :<p key={index}>{item}</p>)
+                               (item.startsWith("http")?
+							   (<><a className={styles.anchor} href={item} target="_blank" key={index}>{item}</a><p><br/></p></> ):(<><p key={index}>{item}</p><p><br/></p></>))
                             ))}
                         </div>
                     </div>
