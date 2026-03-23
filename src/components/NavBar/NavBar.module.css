@@ -33,3 +33,46 @@ margin: 0 auto;
 	text-align: center;
 	font-style: italic;
 }
+
+.pictoLink {
+    aspect-ratio: 1/1;
+    width: 1.5rem;
+    margin: 0 2px;
+}
+
+.rightblock{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   
+}
+
+.mailTel{
+    display: flex;
+    flex-direction: column;
+}
+
+.picto{
+    margin: 3px auto;
+}
+
+.rowFlex{
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin-left: 6px;
+	justify-content: center;
+}
+
+.mainFlex{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+	
+}
+
+@media (min-width: 768px){
+	.mainFlex{
+		flex-direction: row;
+	}
+}

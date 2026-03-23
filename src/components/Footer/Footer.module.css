@@ -1,6 +1,6 @@
 .allblocks {
-    display: flex;
-    justify-content: space-around;
+    /* display: flex;
+    justify-content: space-around; */
     background-color: var(--secondary-bg-color);
     position: fixed;
     bottom: 0;
@@ -20,6 +20,12 @@
     justify-content: center;   
 }
 
+.centerblock{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   
+}
+
 .mailTel{
     display: flex;
     flex-direction: column;
@@ -33,8 +39,8 @@
 text-align: center;
 }
 
-.leftblock{
-    display:none
+.pCenter{
+	text-align: center;
 }
 
 @media (min-width: 768px) {
