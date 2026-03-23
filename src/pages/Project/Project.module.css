@@ -83,12 +83,14 @@ h3 {
 }
 
 .texteBlock{
-    width:560px
+    width:90%
 }
 
 .projectVideo{
 	width:560px;
     height:315px;
+	display: block;
+	margin:0 auto;
 }
 
 }
