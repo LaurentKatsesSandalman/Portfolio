@@ -68,46 +68,40 @@ function ProjectPage() {
                     </div>
                 </div>
                 <div className={styles.texteBlock}>
-                    <div className={styles.h3container}>
-                        <h3>Project Type</h3>
-                        <p>{currentProject.projectType}</p>
-                    </div>
-                    <div className={styles.h3container}>
-                        <h3>Role</h3>
-                        <p>{currentProject.role}</p>
-                    </div>
-                    <div className={styles.h3container}>
-                        <h3>Place</h3>
-                        <p>{currentProject.place}</p>
-                    </div>
-                    <div className={styles.h3container}>
-                        <h3>Starting Date</h3>
-                        <p>{currentProject.starting}</p>
+                    <div className={styles.metaGrid}>
+                        <div className={styles.metaItem}>
+                            <span className={styles.metaLabel}>Project Type</span>
+                            <span className={styles.metaValue}>{currentProject.projectType}</span>
+                        </div>
+                        <div className={styles.metaItem}>
+                            <span className={styles.metaLabel}>Role</span>
+                            <span className={styles.metaValue}>{currentProject.role}</span>
+                        </div>
+                        <div className={styles.metaItem}>
+                            <span className={styles.metaLabel}>Place</span>
+                            <span className={styles.metaValue}>{currentProject.place}</span>
+                        </div>
+                        <div className={styles.metaItem}>
+                            <span className={styles.metaLabel}>Starting Date</span>
+                            <span className={styles.metaValue}>{currentProject.starting}</span>
+                        </div>
                     </div>
                     <div className={styles.h3container}>
                         <h3>What I did</h3>
                         {currentProject.desc.map((item, index) =>
                             item.startsWith("http") ? (
-                                <>
-                                    <a
-                                        className={styles.anchor}
-                                        href={item}
-                                        target="_blank"
-                                        key={index}
-                                    >
-                                        {item}
-                                    </a>
-                                    <p>
-                                        <br />
-                                    </p>
-                                </>
+                                <a
+                                    className={styles.anchor}
+                                    href={item}
+                                    target="_blank"
+                                    key={index}
+                                >
+                                    {item}
+                                </a>
                             ) : (
-                                <>
-                                    <p key={index}>{item}</p>
-                                    <p>
-                                        <br />
-                                    </p>
-                                </>
+                                <p className={styles.descParagraph} key={index}>
+                                    {item}
+                                </p>
                             ),
                         )}
                     </div>

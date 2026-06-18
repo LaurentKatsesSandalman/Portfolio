@@ -4,6 +4,7 @@
     align-items: center;
     padding: 5px 8px 5px;
     background-color: var(--secondary-bg-color);
+    border-bottom: 2px solid var(--accent-color);
 }
 
 .logo{
@@ -38,6 +39,11 @@ margin: 0 auto;
     aspect-ratio: 1/1;
     width: 1.5rem;
     margin: 0 2px;
+    transition: transform 0.2s ease;
+}
+
+.pictoLink:hover {
+    transform: scale(1.15);
 }
 
 .rightblock{

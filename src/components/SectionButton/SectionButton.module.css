@@ -11,20 +11,39 @@
 .sectionName{
     display: block;
     text-align: center;
-	margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--accent-color);
 }
 
 .sectionLink {
   text-decoration: none;
   color: inherit;
-
+  display: block;
+  width: min(85vw, 320px);
   margin-top: 1rem;
+  padding: 1.25rem 1rem 1rem;
+  background-color: var(--secondary-bg-color);
+  border-radius: 16px;
+  border: 1px solid transparent;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.sectionLink:hover,
+.sectionLink:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--accent-color);
 }
 
 @media (min-width: 768px) {
 .sectionLink {
- 
-  width: min(20vw, 180px);
+
+  width: calc(min(20vw, 180px) + 2rem);
   margin-top: 2rem;
 }
 

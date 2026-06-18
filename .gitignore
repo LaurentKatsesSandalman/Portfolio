@@ -12,6 +12,13 @@ dist
 dist-ssr
 *.local
 
+# Claude Code
+CLAUDE.md
+.claude/settings.local.json
+.tmp-screenshot.mjs
+.tmp-screenshots/
+.tmp-session-handoff.md
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

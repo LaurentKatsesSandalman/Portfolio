@@ -39,20 +39,22 @@ function DocProjectPage() {
             </Link>
             <div className={styles.main}>
                 <h2 className={styles.h2}>{currentProject.name}</h2>
-                {currentProject.desc.map((item, index) =>
-                    item.startsWith("http") ? (
-                        <a
-                            className={styles.anchor}
-                            href={item}
-                            target="_blank"
-                            key={index}
-                        >
-                            {item}
-                        </a>
-                    ) : (
-                        <p key={index}>{item}</p>
-                    ),
-                )}
+                <div className={styles.docDescBlock}>
+                    {currentProject.desc.map((item, index) =>
+                        item.startsWith("http") ? (
+                            <a
+                                className={styles.anchor}
+                                href={item}
+                                target="_blank"
+                                key={index}
+                            >
+                                {item}
+                            </a>
+                        ) : (
+                            <p className={styles.descParagraph} key={index}>{item}</p>
+                        ),
+                    )}
+                </div>
                 {currentProject.pdf.map((item, index) => (
                     <PdfComponent
                         key={index}

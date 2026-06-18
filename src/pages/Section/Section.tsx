@@ -32,7 +32,7 @@ function SectionPage(){
             key={project.toParam}
             to={project.toParam}
             img={project.img}
-            name={project.name}
+            name={project.shorterName ?? project.name}
             alt={project.alt}
             />
         ))}
