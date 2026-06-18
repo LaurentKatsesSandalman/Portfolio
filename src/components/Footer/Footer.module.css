@@ -2,6 +2,7 @@
     /* display: flex;
     justify-content: space-around; */
     background-color: var(--secondary-bg-color);
+    border-top: 2px solid var(--accent-color);
     position: fixed;
     bottom: 0;
     left: 0;

@@ -1,5 +1,6 @@
 export interface Project {
     name: string;
+	shorterName?: string;
     toParam: string;
     img: string;
 	desktopImg?:string;

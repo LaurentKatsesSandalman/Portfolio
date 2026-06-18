@@ -23,6 +23,11 @@ function HomePage() {
                     <h2 className={styles.h2top}>
                         Free-to-play & Mobile Games
                     </h2>
+                    <div className={styles.badgeRow}>
+                        <span className={styles.badge}>10+ Years Experience</span>
+                        <span className={styles.badge}>Mobile & Facebook F2P</span>
+                        <span className={styles.badge}>Concept to Live-Ops</span>
+                    </div>
                     <p className={styles.pblock}>
                         Hi!</p>
 						<p className={styles.pblock}>
@@ -40,15 +45,17 @@ function HomePage() {
                 </div>
             </div>
 
-            <h2 className={styles.h2middle}>Portfolio</h2>
-			<p className={styles.pblock}>
-                        In this section, you’ll find most of the free-to-play games I worked on as a Game Designer.</p>
-						  <p className={styles.pblock}>
-						Games I helped create as a Company Lead are not mentioned, as I wasn’t one of the Main Designers, but more of an unblocker or facilitator.
-                    </p>
-					<p className={styles.pblock}>
-						I have also discarded my early youth gamified animation projects.
-                    </p>
+            <div className={styles.portfolioIntro}>
+                <h2 className={styles.h2middle}>GD Portfolio</h2>
+                <p className={styles.pblock}>
+                            In this section, you’ll find most of the free-to-play games I worked on as a Game Designer.</p>
+                            <p className={styles.pblock}>
+                            Games I helped create as a Company Lead are not mentioned, as I wasn’t one of the Main Designers, but more of an unblocker or facilitator.
+                        </p>
+                        <p className={styles.pblock}>
+                            I have also discarded my early youth gamified animation projects.
+                        </p>
+            </div>
             <div className={styles.projectsContainer}>
                 <SectionButton
                     image={mobile}

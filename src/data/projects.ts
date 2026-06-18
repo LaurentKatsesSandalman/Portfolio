@@ -9,8 +9,9 @@ import projectBlast from "../assets/img/projects/blast_raiders.jpg"
 import projectBlastDesktop from "../assets/img/projects/maxresdefault.jpg"
 import projectTennis from "../assets/img/projects/tennis_manager.jpg"
 import projectRivals from "../assets/img/projects/rivals.jpg"
+import type { Section } from "../interfaces/allInterfaces";
 
-export const portfolio = [
+export const portfolio: Section[] = [
     {
         section: "Released Mobile Games",
         toParam: "mobile",
@@ -99,6 +100,7 @@ export const portfolio = [
             },
             {
                 name: "Atlantis Fantasy (city builder)",
+                shorterName: "Atlantis Fantasy",
                 toParam: "atlantis",
                 img: projectAtlantis,
                 desktopImg: projectAtlantisDesktop,
@@ -139,6 +141,7 @@ export const portfolio = [
         projects: [
             {
                 name: "Blast Raiders (Blast Explorers)",
+                shorterName: "Blast Raiders",
                 toParam: "blast",
                 img: projectBlast,
                 desktopImg: projectBlastDesktop,

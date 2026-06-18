@@ -1,9 +1,33 @@
+.pdfCard{
+	margin: 2rem auto;
+	background-color: var(--secondary-bg-color);
+	border-radius: 16px;
+	padding: 1.25rem 1.5rem 1.5rem;
+	box-shadow: var(--card-shadow);
+	max-width: 1000px;
+}
+
 .pdfTitle{
     color: var(--secondary-color);
 	text-align: center;
-	margin-top: 2rem;
+	padding-bottom: 0.6rem;
+	margin-bottom: 0.75rem;
+	border-bottom: 2px solid var(--accent-color);
+}
+
+.pdfDesc{
+	margin-bottom: 1rem;
+}
+
+.anchor{
+	color: var(--accent-color);
+	display: block;
+	margin-bottom: 1rem;
 }
 
 .pdfContainer{
-	width: 100%
+	width: 100%;
+	border-radius: 16px;
+	box-shadow: var(--card-shadow);
+	margin-top: 0.5rem;
 }

@@ -8,6 +8,9 @@
 	--secondary-color: white; /* text color */
 	--background-color: lightyellow;
 	--secondary-bg-color: #252525;
+	--accent-color: #e3a458; /* warm amber accent */
+	--card-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+	--card-shadow-hover: 0 8px 22px rgba(0, 0, 0, 0.55);
     --font-default: 'Roboto', sans-serif;
     --font-title:'Inter', sans-serif;
 	--size-default: 0.9rem;

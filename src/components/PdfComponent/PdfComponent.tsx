@@ -10,19 +10,19 @@ interface PdfComponentProps {
 
 function PdfComponent( { pdfTitle, pdfDesc, pdfLink, pdfHeight }: PdfComponentProps ) {
 
-	return (<>
+	return (<div className={styles.pdfCard}>
 	 <h3 className={styles.pdfTitle}>{pdfTitle}</h3>
 	 {pdfDesc.map((item, index) => (
-                               (item.startsWith("http")?<a className={styles.anchor} href={item} target="_blank" key={index}>{item}</a> :<p key={index}>{item}</p>)
+                               (item.startsWith("http")?<a className={styles.anchor} href={item} target="_blank" key={index}>{item}</a> :<p className={styles.pdfDesc} key={index}>{item}</p>)
                             ))}
 	<iframe
 	title={pdfTitle}
-	src={pdfLink}
+	src={`${pdfLink}#view=FitH`}
 	loading="lazy"
 	style={{height:pdfHeight}}
 	className={styles.pdfContainer}
 	></iframe>
-	</>)
+	</div>)
 }
 
 export default PdfComponent
