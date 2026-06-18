@@ -12,10 +12,13 @@ dist
 dist-ssr
 *.local
 
+# Source material for the Dev/GD merge (own git repo, read for reference only)
+/PortefolioWeb/
+
 # Claude Code
 CLAUDE.md
 .claude/settings.local.json
-.tmp-screenshot.mjs
+.tmp-screenshot*.mjs
 .tmp-screenshots/
 .tmp-session-handoff.md
 

@@ -5,14 +5,16 @@ import { docs } from "../../data/docProjects";
 import styles from "./Section.module.css"
 import arrowIcon from "../../assets/icons/arrow.png";
 import DocProjectButton from "../../components/ProjectButton/DocProjectButton";
+import { useModeLang } from "../../hooks/useModeLang";
 
 function DocSectionPage(){
     const{section}=useParams()
+    const { mode, lang } = useModeLang();
 
     const currentSection = docs.find((item)=>item.toParam === section)
 
     const location = useLocation();
-    const initialPage = location.state?.from || "/";
+    const initialPage = location.state?.from || `/${mode}/${lang}`;
 
     if(!currentSection){
         return (

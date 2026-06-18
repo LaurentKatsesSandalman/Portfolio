@@ -9,13 +9,85 @@ import projectBlast from "../assets/img/projects/blast_raiders.jpg"
 import projectBlastDesktop from "../assets/img/projects/maxresdefault.jpg"
 import projectTennis from "../assets/img/projects/tennis_manager.jpg"
 import projectRivals from "../assets/img/projects/rivals.jpg"
-import type { Section } from "../interfaces/allInterfaces";
+import type { GDSection } from "../interfaces/allInterfaces";
 
-export const portfolio: Section[] = [
+// NOTE (Dev/GD merge, step 2): `fr` fields below currently mirror `en` as placeholders. The actual
+// French translation pass is step 5 of the merge plan (see .tmp-session-handoff.md) — not done yet.
+
+const sbuDesc = [
+    "Super Brawl Universe is a turn-based fighting game developed under the Nickelodeon licence. Despite a very high volume of organic downloads (free, not ad-driven), the game suffered from weak retention and near-zero monetization, leading to a decision made before I joined to pivot from a Marvel: Contest of Champions-inspired model to one closer to Looney Tunes World of Mayhem. I joined the project part-time, alongside Tour de France 2020, to specify and implement this new model.",
+    "My first task was a full retro-game-design of LTWM's economy: model analysis, specs, balancing formulas, and implementation scripts directly integrated into the game via Google Sheets. The adaptation was not straightforward: LTWM relies on hundreds of character variants to fuel its lootboxes, whereas SBU had around twenty, with no plans to add more than two or three in the short term. I reworked the lootbox logic entirely: diluting rewards and accelerating the progression of existing characters, so that fragment collection remained satisfying despite the limited roster. I designed the probability formulas and win projections, implemented directly in the game.",
+    "I also took over a shelved \"powers\" feature, under three constraints: rely exclusively on already-coded functions or easily derived ones, be balanced by a central formula capable of comparing heterogeneous effects (freeze, poison, shield, regeneration, acceleration, etc.), and be implementable by GDs via spreadsheet without further developer involvement once the global feature is coded. I adapted the existing spreadsheet to integrate this logic, adding, removing, and restructuring columns as needed.",
+    "On the monetization side, I set up a rotating daily pack schedule: three simultaneous offers per day, running on deliberately offset A/B/C cycles to limit repetition and avoid saturation. Each sprint, I analyzed hard currency and real currency sales to refine the schedule: character popularity, optimal delay between two appearances of the same character, synergies between characters from the same universe.",
+    "The LTWM model places PvP at the center of progression, which creates specific issues in a skill-based asynchronous game. I therefore worked to strengthen PvE alternatives, offering a satisfying progression path for players reluctant to engage with PvP.",
+    "The project was cancelled when Playsoft was acquired by Product Madness, on the assumption that the download volume was largely driven by a younger audience without access to payment methods.",
+];
+
+const tdfDesc = [
+    "Tour de France is an annual game: same engine, new features, and a hard release deadline tied to the official race start. I was brought in after completing an analysis test on the current version, with the main mission of correcting its weaknesses. I arrived on TDF2020 with a documented list of identified problems and proposed solutions, but the scope ultimately implemented before launch was more limited than planned. On this project, I worked part-time, with the other half dedicated to SBU.",
+    "One of the structural changes I introduced was separating the cyclist from their bike, which had previously been linked: a fully upgraded bike could disappear when its associated cyclist was discarded. This change had cascading consequences: the progression system for both entities had to be reworked, resources reassigned, and all offers and packs adapted to the new logic. I also restructured an existing adaptive offers feature, defining spending profiles over 30 days and a logic for presenting offers based on the last offer seen and its purchase status. The balancing of the camp buildings (purchase, upgrades, unlock conditions, effects), each tied to one of the game's main features, was also largely my responsibility, on specs that had often been outlined before my arrival. I also supervised a junior GD on this project who contributed significantly; he managed the technology tree feature in its entirety.",
+    "For TDF 2021, resources were limited: one third of my time and roughly one man-month of development. I chose to focus all effort on the live ops feature: reconstructing real race stages on a calendar close to the official one. This involved significant collection and implementation work for each stage: identifying official sources, retrieving and tracing route maps to generate the in-game path, entering data in a spreadsheet (total distance, climbs with category and kilometer, sprint zones), and selecting a royalty-free illustration. I managed the full live ops over the course of the season. The financial outcome covered the licence and staffing costs, without generating significant margin.",
+];
+
+const mggMobileDesc = [
+    "Mutants: Genetic Gladiators is a fighting and creature-breeding game, built on Kobojo's city-builder engine (previously used for Atlantis Fantasy) and on an initial concept from the CTO and CMO: take inspiration from Dragon City, but make it more midcore, replacing classic elements with creature types. Most of the Atlantis Fantasy team transitioned to MGG, and I was involved from the concept phase. The six types ultimately chosen were: robot, necro, warrior, zoo, magic, and alien, enabling combinations such as robot-necro or alien-warrior.",
+    "My first structural contribution was identifying and addressing what I saw as Dragon City's core weakness: its breeding and fighting loops are disconnected, which sidelines combat as a secondary feature and pulls the audience toward casual play. I convinced the team that this was indeed the problem, and that my solution was the right one: linking the two loops through an original mechanic, the mutosterone, a resource tied to each creature that increases with combat and decreases after each breeding. Creatures cannot breed unless they have fought enough beforehand.",
+    "Once the concept was validated, I took charge of the full game design: a balancing formula for mutants (built from scratch, automatically calculating hit points and attack value from a single parameter: attack speed), global resource balancing (breeding, level-up, land: cost and output). I also designed and level-designed the entire initial PvE (including energy costs and resource rewards): 60 fights across 6 genes, each fight featuring one to two waves of one to three mutants. To generate the XML scripts needed for implementation without mobilizing developers, I built an Excel matrix from scratch that produced the complete script for all fights from basic inputs, leaving only minimal cleanup in a text editor.",
+    "The game launched with 72 initial creatures (six genes, combined two by two, one rare and one common per combination). I level-designed all creatures: stats, genes, positioning within the global balance. The narrative concept of each creature was the result of a collective brainstorm, to which I contributed roughly a third to half of the ideas, such as the Scare Bears for the zoo/necro combination, a zombie version of the Care Bears. I also produced all quests and achievements, including their implementation in the developer-provided tool, a significant portion of the associated dialogues, and all game documentation.",
+    "Mutants: Genetic Gladiators (Mobile) is the mobile port of this game. The two versions were first developed sequentially, Facebook first, then in parallel once the mobile version had caught up in terms of features. In practice, it was a single game: same creatures, same balancing values, same PvE, same events at the same time on both platforms. Shortly after the mobile launch, each platform was generating comparable revenue.",
+    "The main mobile-specific work was a full UI overhaul for phones and tablets, handled by a dedicated mobile GD.",
+    "Live ops followed a regular event rhythm: bi-weekly event quests, regular release of new mutants (some breedable, others not), and ongoing game improvements: FTUE, new secondary features, rebalancing. The game reached 250,000 DAUs and 1.5 million MAUs, and is still live more than ten years after launch.",
+];
+
+const mggFbDesc = [
+    "Mutants: Genetic Gladiators is a fighting and creature-breeding game, built on Kobojo's city-builder engine (previously used for Atlantis Fantasy) and on an initial concept from the CTO and CMO: take inspiration from Dragon City, but make it more midcore, replacing classic elements with creature types. Most of the Atlantis Fantasy team transitioned to MGG, and I was involved from the concept phase. The six types ultimately chosen were: robot, necro, warrior, zoo, magic, and alien, enabling combinations such as robot-necro or alien-warrior.",
+    "My first structural contribution was identifying and addressing what I saw as Dragon City's core weakness: its breeding and fighting loops are disconnected, which sidelines combat as a secondary feature and pulls the audience toward casual play. I convinced the team that this was indeed the problem, and that my solution was the right one: linking the two loops through an original mechanic, the mutosterone, a resource tied to each creature that increases with combat and decreases after each breeding. Creatures cannot breed unless they have fought enough beforehand.",
+    "Once the concept was validated, I took charge of the full game design: a balancing formula for mutants (built from scratch, automatically calculating hit points and attack value from a single parameter: attack speed), global resource balancing (breeding, level-up, land: cost and output). I also designed and level-designed the entire initial PvE (including energy costs and resource rewards): 60 fights across 6 genes, each fight featuring one to two waves of one to three mutants. To generate the XML scripts needed for implementation without mobilizing developers, I built an Excel matrix from scratch that produced the complete script for all fights from basic inputs, leaving only minimal cleanup in a text editor.",
+    "The game launched with 72 initial creatures (six genes, combined two by two, one rare and one common per combination). I level-designed all creatures: stats, genes, positioning within the global balance. The narrative concept of each creature was the result of a collective brainstorm, to which I contributed roughly a third to half of the ideas, such as the Scare Bears for the zoo/necro combination, a zombie version of the Care Bears. I also produced all quests and achievements, including their implementation in the developer-provided tool, a significant portion of the associated dialogues, and all game documentation.",
+    "Live ops followed a regular event rhythm: bi-weekly event quests, regular release of new mutants (some breedable, others not), and ongoing game improvements: FTUE, new secondary features, rebalancing. The game reached 250,000 DAUs and 1.5 million MAUs, and is still live more than ten years after launch.",
+];
+
+const atlantisDesc = [
+    "Atlantis Fantasy is a fully functional Facebook city-builder when I join the project. I am the only GD, and my work consists primarily of live ops, alongside a few improvements: new secondary features, FTUE rework.",
+    "The main rhythm is one event every two weeks, most often tied to the calendar (Valentine's Day, Olympics, Easter, Christmas): define a theme (\"Valentine's Day\" becomes \"The Return of Cupid\"), design a series of around ten event quests with dialogues, quests that should not depend (or barely) on the player's progress in the main storyline. Each event is built around an item pack created by the art team. The quests follow a progressive difficulty curve: low-level resources accessible to all at the start of the series, increasing investment in time or hard currency for mid-series quests, premium items at the end.",
+    "I also designed and implemented the quests and dialogues for the Season 2 of the main storyline, based on political intrigues and love stories between gods.",
+];
+
+const tsDesc = [
+    "Totally Spies! Fashion Agent is a free-to-play Facebook game developed under the Totally Spies! licence, for which I serve both as lead GD and licence manager. This dual role means guiding the team in respecting the universe, while also defending our creative choices to the licensor, Marathon. I never faced a refusal, drawing on a thorough understanding of the licence's values and codes.",
+    "The game is divided into two distinct universes reflecting the characters' double lives: fashion and espionage. The fashion side is itself split in two: a 2D character customization and fashion module, and an isometric 3D home decoration game. The espionage side is also in 3D iso; it is a semi-linear puzzle-adventure game in which the player progresses by spending energy points to overcome obstacles, fight enemies, and solve puzzles based on discovering the correct sequence of actions, chest openings, and key usage. This gameplay system, which I designed from scratch inspired by Farmville's land-clearing mechanic and enriched with a puzzle dimension and spatial progression, was copied in its entirety shortly after our launch by Zynga's Adventure World. A point of pride, and bad news commercially: David rarely survives Goliath's assault.",
+    "As the sole GD on the project, I handled all game design: mechanics definition, level design items, full level design, energy and currency balancing (soft and hard currency), and player progression management (some areas requiring a minimum level to unlock). With no data analyst available, I also handled part of the data analysis in Excel, primarily focused on purchase and retention patterns.",
+];
+
+const blastDesc = [
+    "Blast Raiders is a mobile puzzle game with a match-2 core gameplay in the vein of Toon Blast. Part of the project predated my arrival. The game went through several significant meta pivots over two years, and with each new direction set by the project owner, I took charge of all game design: feature documentation, new level design building blocks, detailed wireframes, and full economy design and implementation (projections, balancing, values implemented via spreadsheet).",
+    "The first pivot aimed to blend Toon Blast and Coin Master: a level-based core gameplay combined with attack and raid mechanics allowing players to destroy another player's village. The meta revolved around building isometric 3D villages, funded by a fluid soft currency tied to level performance and stealable by opponents.",
+    "The second pivot shifted the game toward a Royal Match meta, with star-based construction (1 completed level = 1 star). I conducted an in-depth feature and economy retro-game-design of Royal Match, including recreating its events adapted to our own economy, and managed the full rebalancing this pivot required. The constraint was to preserve some form of raid: I designed an adaptation in which raiding allows players to steal free boosters, compatible with the new meta without disrupting its balance.",
+    "I designed and implemented 450 levels, along with an obstacle matrix: prior to level design, it defined precisely which obstacles appeared in which levels, planned unlocks, calculated distributions, and verified they matched the original intent, itself formalized in a separate sheet defining each obstacle's weight and expected frequency across the first 450 levels.",
+    "I also worked on multiple FTUE versions, each iteration informed by per-step data analysis: churn rate at each tutorial step, hypotheses on causes, and implementation of solutions. I also collaborated with artists on the visual themes of events and obstacles: reference sources, moodboard validation.",
+    "The game remained in soft launch throughout the project, getting closer with each new version to the monetization and D7 retention targets that would have greenlit a global launch, without ever reaching them.",
+];
+
+const tennisDesc = [
+    "Tennis Manager Mobile is the first tennis management game on mobile, developed under the Mouratoglou licence, named after the coach of Serena Williams and owner of a tennis academy. The initial brief set two strong constraints: coach only one player at a time, and manage a campus symbolically representing the Mouratoglou Academy.",
+    "To ground the game in professional tennis reality, I integrated the full tennis ruleset but also the full ATP ruleset (points calculation, yearly rankings, tournament draw rules based on registered players' rankings, mandatory participation requirements for top-ranked players, etc.); all competitions in the game existed in real life, with the correct surface type and a consistent calendar. I also had two direct exchanges with Patrick Mouratoglou to understand the strategies and priorities of a real high-level coach, which I integrated into the game mechanics.",
+    "The game draws inspiration from football management games: training, stat progression, tournament selection, and mostly automated matches. The player can however define strategy by adjusting parameters on an offensive/defensive spectrum, and intervene during the match to change those parameters (with penalties) to adapt to the situation.",
+    "I handled all game design: feature documentation, balancing, initial economy. When simulation engine imperfections were identified, our approaches diverged: I advocated for fixing the engine itself, while the studio director opted for overlay fixes, which he designed and implemented himself.",
+    "The game was soft-launched but did not find its audience. I left after two years, before its global launch, which happened later with additional features.",
+];
+
+const rivalsDesc = [
+    "Urban Rivals Squad RPG is a mobile adaptation of Urban Rivals, a collectible card game, into a turn-based squad RPG in the vein of Summoners War: a team of fighters, each with a basic attack and two special abilities with cooldowns, targeting enemies or allies depending on their nature.",
+    "The central twist, which I designed, is the synergy system: when a clan member attacks, other members of the same clan in the team have a chance to automatically perform a free attack of lesser power. These synergies can also apply status effects (burn, poison, haste, shield) that feed into clan-specific combos, such as \"exploit burn,\" which amplifies damage on already-burning targets. The combos emerged from a mix of gaming culture references, adaptation of the original card game's fighter abilities, and narrative elements from the licence: a fire-oriented clan, for example, naturally develops synergies around burn.",
+    "Although I was not the licence manager, I drew on my licence management experience from other projects to integrate as many Urban Rivals lore elements as possible into the gameplay.",
+    "I handled all game design on this project over just over a year. The game reached alpha, sought a publisher without success, and was then shelved.",
+];
+
+export const portfolio: GDSection[] = [
     {
-        section: "Released Mobile Games",
+        section: { en: "Released Mobile Games", fr: "Released Mobile Games" },
         toParam: "mobile",
-        desc: "The mobile free-to-play games I worked on which were released",
+        desc: { en: "The mobile free-to-play games I worked on which were released", fr: "The mobile free-to-play games I worked on which were released" },
         projects: [
             {
                 name: "Super Brawl Universe",
@@ -23,18 +95,11 @@ export const portfolio: Section[] = [
                 img: projectSbu,
                 alt: "Super Brawl Universe loading page",
                 link: "https://www.youtube.com/embed/5DqP_E5xtQI?si=aC3Hr4A6nuQds22A",
-                projectType: "Mobile Game - Production",
-                role: "Lead Game Designer",
-                place: "Playsoft - Poland - Remote",
+                projectType: { en: "Mobile Game - Production", fr: "Mobile Game - Production" },
+                role: { en: "Lead Game Designer", fr: "Lead Game Designer" },
+                place: { en: "Playsoft - Poland - Remote", fr: "Playsoft - Poland - Remote" },
                 starting: "2020",
-                desc: [
-                    "Super Brawl Universe is a turn-based fighting game developed under the Nickelodeon licence. Despite a very high volume of organic downloads (free, not ad-driven), the game suffered from weak retention and near-zero monetization, leading to a decision made before I joined to pivot from a Marvel: Contest of Champions-inspired model to one closer to Looney Tunes World of Mayhem. I joined the project part-time, alongside Tour de France 2020, to specify and implement this new model.",
-                    "My first task was a full retro-game-design of LTWM's economy: model analysis, specs, balancing formulas, and implementation scripts directly integrated into the game via Google Sheets. The adaptation was not straightforward: LTWM relies on hundreds of character variants to fuel its lootboxes, whereas SBU had around twenty, with no plans to add more than two or three in the short term. I reworked the lootbox logic entirely: diluting rewards and accelerating the progression of existing characters, so that fragment collection remained satisfying despite the limited roster. I designed the probability formulas and win projections, implemented directly in the game.",
-                    "I also took over a shelved \"powers\" feature, under three constraints: rely exclusively on already-coded functions or easily derived ones, be balanced by a central formula capable of comparing heterogeneous effects (freeze, poison, shield, regeneration, acceleration, etc.), and be implementable by GDs via spreadsheet without further developer involvement once the global feature is coded. I adapted the existing spreadsheet to integrate this logic, adding, removing, and restructuring columns as needed.",
-                    "On the monetization side, I set up a rotating daily pack schedule: three simultaneous offers per day, running on deliberately offset A/B/C cycles to limit repetition and avoid saturation. Each sprint, I analyzed hard currency and real currency sales to refine the schedule: character popularity, optimal delay between two appearances of the same character, synergies between characters from the same universe.",
-                    "The LTWM model places PvP at the center of progression, which creates specific issues in a skill-based asynchronous game. I therefore worked to strengthen PvE alternatives, offering a satisfying progression path for players reluctant to engage with PvP.",
-                    "The project was cancelled when Playsoft was acquired by Product Madness, on the assumption that the download volume was largely driven by a younger audience without access to payment methods.",
-                ],
+                desc: { en: sbuDesc, fr: sbuDesc },
             },
             {
                 name: "Tour de France 2020 & 2021",
@@ -43,15 +108,11 @@ export const portfolio: Section[] = [
                 desktopImg: projectTdfDesktop,
                 alt: "Tour de France advertisement sample",
                 link: "https://www.youtube.com/embed/6mb5lzdHihM?si=ufP1O5GeeL9p3fg8",
-                projectType: "Mobile Game - Production & Live Ops",
-                role: "Lead Game Designer",
-                place: "Playsoft - Poland - Remote",
+                projectType: { en: "Mobile Game - Production & Live Ops", fr: "Mobile Game - Production & Live Ops" },
+                role: { en: "Lead Game Designer", fr: "Lead Game Designer" },
+                place: { en: "Playsoft - Poland - Remote", fr: "Playsoft - Poland - Remote" },
                 starting: "2020",
-                desc: [
-                    "Tour de France is an annual game: same engine, new features, and a hard release deadline tied to the official race start. I was brought in after completing an analysis test on the current version, with the main mission of correcting its weaknesses. I arrived on TDF2020 with a documented list of identified problems and proposed solutions, but the scope ultimately implemented before launch was more limited than planned. On this project, I worked part-time, with the other half dedicated to SBU.",
-                    "One of the structural changes I introduced was separating the cyclist from their bike, which had previously been linked: a fully upgraded bike could disappear when its associated cyclist was discarded. This change had cascading consequences: the progression system for both entities had to be reworked, resources reassigned, and all offers and packs adapted to the new logic. I also restructured an existing adaptive offers feature, defining spending profiles over 30 days and a logic for presenting offers based on the last offer seen and its purchase status. The balancing of the camp buildings (purchase, upgrades, unlock conditions, effects), each tied to one of the game's main features, was also largely my responsibility, on specs that had often been outlined before my arrival. I also supervised a junior GD on this project who contributed significantly; he managed the technology tree feature in its entirety.",
-                    "For TDF 2021, resources were limited: one third of my time and roughly one man-month of development. I chose to focus all effort on the live ops feature: reconstructing real race stages on a calendar close to the official one. This involved significant collection and implementation work for each stage: identifying official sources, retrieving and tracing route maps to generate the in-game path, entering data in a spreadsheet (total distance, climbs with category and kilometer, sprint zones), and selecting a royalty-free illustration. I managed the full live ops over the course of the season. The financial outcome covered the licence and staffing costs, without generating significant margin.",
-                ],
+                desc: { en: tdfDesc, fr: tdfDesc },
             },
             {
                 name: "Mutants: Genetic Gladiators",
@@ -59,26 +120,18 @@ export const portfolio: Section[] = [
                 img: projectMgg,
                 alt: "Mutant Genetic Gladiators advertisement sample",
                 link: "https://www.youtube.com/embed/gpGOVU2-JqM?si=FoQXMB9Bssi_HGLw",
-                projectType: "Mobile Game - Concept to Live Ops",
-                role: "Original Game Designer",
-                place: "Kobojo - France",
+                projectType: { en: "Mobile Game - Concept to Live Ops", fr: "Mobile Game - Concept to Live Ops" },
+                role: { en: "Original Game Designer", fr: "Original Game Designer" },
+                place: { en: "Kobojo - France", fr: "Kobojo - France" },
                 starting: "2013",
-                desc: [
-                    "Mutants: Genetic Gladiators is a fighting and creature-breeding game, built on Kobojo's city-builder engine (previously used for Atlantis Fantasy) and on an initial concept from the CTO and CMO: take inspiration from Dragon City, but make it more midcore, replacing classic elements with creature types. Most of the Atlantis Fantasy team transitioned to MGG, and I was involved from the concept phase. The six types ultimately chosen were: robot, necro, warrior, zoo, magic, and alien, enabling combinations such as robot-necro or alien-warrior.",
-                    "My first structural contribution was identifying and addressing what I saw as Dragon City's core weakness: its breeding and fighting loops are disconnected, which sidelines combat as a secondary feature and pulls the audience toward casual play. I convinced the team that this was indeed the problem, and that my solution was the right one: linking the two loops through an original mechanic, the mutosterone, a resource tied to each creature that increases with combat and decreases after each breeding. Creatures cannot breed unless they have fought enough beforehand.",
-                    "Once the concept was validated, I took charge of the full game design: a balancing formula for mutants (built from scratch, automatically calculating hit points and attack value from a single parameter: attack speed), global resource balancing (breeding, level-up, land: cost and output). I also designed and level-designed the entire initial PvE (including energy costs and resource rewards): 60 fights across 6 genes, each fight featuring one to two waves of one to three mutants. To generate the XML scripts needed for implementation without mobilizing developers, I built an Excel matrix from scratch that produced the complete script for all fights from basic inputs, leaving only minimal cleanup in a text editor.",
-                    "The game launched with 72 initial creatures (six genes, combined two by two, one rare and one common per combination). I level-designed all creatures: stats, genes, positioning within the global balance. The narrative concept of each creature was the result of a collective brainstorm, to which I contributed roughly a third to half of the ideas, such as the Scare Bears for the zoo/necro combination, a zombie version of the Care Bears. I also produced all quests and achievements, including their implementation in the developer-provided tool, a significant portion of the associated dialogues, and all game documentation.",
-                    "Mutants: Genetic Gladiators (Mobile) is the mobile port of this game. The two versions were first developed sequentially, Facebook first, then in parallel once the mobile version had caught up in terms of features. In practice, it was a single game: same creatures, same balancing values, same PvE, same events at the same time on both platforms. Shortly after the mobile launch, each platform was generating comparable revenue.",
-                    "The main mobile-specific work was a full UI overhaul for phones and tablets, handled by a dedicated mobile GD.",
-                    "Live ops followed a regular event rhythm: bi-weekly event quests, regular release of new mutants (some breedable, others not), and ongoing game improvements: FTUE, new secondary features, rebalancing. The game reached 250,000 DAUs and 1.5 million MAUs, and is still live more than ten years after launch.",
-                ],
+                desc: { en: mggMobileDesc, fr: mggMobileDesc },
             },
         ],
     },
     {
-        section: "Facebook Social Games",
+        section: { en: "Facebook Social Games", fr: "Facebook Social Games" },
         toParam: "fb",
-        desc: "The social games I created as a main Game Designer for Facebook platform.",
+        desc: { en: "The social games I created as a main Game Designer for Facebook platform.", fr: "The social games I created as a main Game Designer for Facebook platform." },
         projects: [
             {
                 name: "Mutants: Genetic Gladiators",
@@ -86,17 +139,11 @@ export const portfolio: Section[] = [
                 img: projectMgg,
                 alt: "Mutant Genetic Gladiators advertisement sample",
                 link: "https://www.youtube.com/embed/gpGOVU2-JqM?si=FoQXMB9Bssi_HGLw",
-                projectType: "Facebook FTP Game - Concept to Live Ops",
-                role: "Main Game Designer",
-                place: "Kobojo - France",
+                projectType: { en: "Facebook FTP Game - Concept to Live Ops", fr: "Facebook FTP Game - Concept to Live Ops" },
+                role: { en: "Main Game Designer", fr: "Main Game Designer" },
+                place: { en: "Kobojo - France", fr: "Kobojo - France" },
                 starting: "2013",
-                desc: [
-                    "Mutants: Genetic Gladiators is a fighting and creature-breeding game, built on Kobojo's city-builder engine (previously used for Atlantis Fantasy) and on an initial concept from the CTO and CMO: take inspiration from Dragon City, but make it more midcore, replacing classic elements with creature types. Most of the Atlantis Fantasy team transitioned to MGG, and I was involved from the concept phase. The six types ultimately chosen were: robot, necro, warrior, zoo, magic, and alien, enabling combinations such as robot-necro or alien-warrior.",
-                    "My first structural contribution was identifying and addressing what I saw as Dragon City's core weakness: its breeding and fighting loops are disconnected, which sidelines combat as a secondary feature and pulls the audience toward casual play. I convinced the team that this was indeed the problem, and that my solution was the right one: linking the two loops through an original mechanic, the mutosterone, a resource tied to each creature that increases with combat and decreases after each breeding. Creatures cannot breed unless they have fought enough beforehand.",
-                    "Once the concept was validated, I took charge of the full game design: a balancing formula for mutants (built from scratch, automatically calculating hit points and attack value from a single parameter: attack speed), global resource balancing (breeding, level-up, land: cost and output). I also designed and level-designed the entire initial PvE (including energy costs and resource rewards): 60 fights across 6 genes, each fight featuring one to two waves of one to three mutants. To generate the XML scripts needed for implementation without mobilizing developers, I built an Excel matrix from scratch that produced the complete script for all fights from basic inputs, leaving only minimal cleanup in a text editor.",
-                    "The game launched with 72 initial creatures (six genes, combined two by two, one rare and one common per combination). I level-designed all creatures: stats, genes, positioning within the global balance. The narrative concept of each creature was the result of a collective brainstorm, to which I contributed roughly a third to half of the ideas, such as the Scare Bears for the zoo/necro combination, a zombie version of the Care Bears. I also produced all quests and achievements, including their implementation in the developer-provided tool, a significant portion of the associated dialogues, and all game documentation.",
-                    "Live ops followed a regular event rhythm: bi-weekly event quests, regular release of new mutants (some breedable, others not), and ongoing game improvements: FTUE, new secondary features, rebalancing. The game reached 250,000 DAUs and 1.5 million MAUs, and is still live more than ten years after launch.",
-                ],
+                desc: { en: mggFbDesc, fr: mggFbDesc },
             },
             {
                 name: "Atlantis Fantasy (city builder)",
@@ -106,15 +153,11 @@ export const portfolio: Section[] = [
                 desktopImg: projectAtlantisDesktop,
                 alt: "Atlantis Fantasy city builder",
                 link: "https://www.youtube.com/embed/jecQdYcS-sY?si=MkajL9mFCh8mvhDT",
-                projectType: "Facebook FTP Game - Live Ops",
-                role: "Live Ops Game Designer",
-                place: "Kobojo - France",
+                projectType: { en: "Facebook FTP Game - Live Ops", fr: "Facebook FTP Game - Live Ops" },
+                role: { en: "Live Ops Game Designer", fr: "Live Ops Game Designer" },
+                place: { en: "Kobojo - France", fr: "Kobojo - France" },
                 starting: "2012",
-                desc: [
-                    "Atlantis Fantasy is a fully functional Facebook city-builder when I join the project. I am the only GD, and my work consists primarily of live ops, alongside a few improvements: new secondary features, FTUE rework.",
-                    "The main rhythm is one event every two weeks, most often tied to the calendar (Valentine's Day, Olympics, Easter, Christmas): define a theme (\"Valentine's Day\" becomes \"The Return of Cupid\"), design a series of around ten event quests with dialogues, quests that should not depend (or barely) on the player's progress in the main storyline. Each event is built around an item pack created by the art team. The quests follow a progressive difficulty curve: low-level resources accessible to all at the start of the series, increasing investment in time or hard currency for mid-series quests, premium items at the end.",
-                    "I also designed and implemented the quests and dialogues for the Season 2 of the main storyline, based on political intrigues and love stories between gods.",
-                ],
+                desc: { en: atlantisDesc, fr: atlantisDesc },
             },
             {
                 name: "Totally Spies! Fashion Agent",
@@ -122,22 +165,18 @@ export const portfolio: Section[] = [
                 img: projectTs,
                 alt: "Totally Spies! Fashion Agents banner",
                 link: "https://www.youtube.com/embed/WX38ov2i6nw?si=3oY2LgraBq0Ob2Xr",
-                projectType: "Facebook FTP Game - Concept to launch",
-                role: "Main Game Designer / Licence Manager",
-                place: "OUAT Entertainment - France",
+                projectType: { en: "Facebook FTP Game - Concept to launch", fr: "Facebook FTP Game - Concept to launch" },
+                role: { en: "Main Game Designer / Licence Manager", fr: "Main Game Designer / Licence Manager" },
+                place: { en: "OUAT Entertainment - France", fr: "OUAT Entertainment - France" },
                 starting: "2011",
-                desc: [
-                    "Totally Spies! Fashion Agent is a free-to-play Facebook game developed under the Totally Spies! licence, for which I serve both as lead GD and licence manager. This dual role means guiding the team in respecting the universe, while also defending our creative choices to the licensor, Marathon. I never faced a refusal, drawing on a thorough understanding of the licence's values and codes.",
-                    "The game is divided into two distinct universes reflecting the characters' double lives: fashion and espionage. The fashion side is itself split in two: a 2D character customization and fashion module, and an isometric 3D home decoration game. The espionage side is also in 3D iso; it is a semi-linear puzzle-adventure game in which the player progresses by spending energy points to overcome obstacles, fight enemies, and solve puzzles based on discovering the correct sequence of actions, chest openings, and key usage. This gameplay system, which I designed from scratch inspired by Farmville's land-clearing mechanic and enriched with a puzzle dimension and spatial progression, was copied in its entirety shortly after our launch by Zynga's Adventure World. A point of pride, and bad news commercially: David rarely survives Goliath's assault.",
-                    "As the sole GD on the project, I handled all game design: mechanics definition, level design items, full level design, energy and currency balancing (soft and hard currency), and player progression management (some areas requiring a minimum level to unlock). With no data analyst available, I also handled part of the data analysis in Excel, primarily focused on purchase and retention patterns.",
-                ],
+                desc: { en: tsDesc, fr: tsDesc },
             },
         ],
     },
     {
-        section: "Soft-launched or unreleased Mobile Games",
+        section: { en: "Soft-launched or unreleased Mobile Games", fr: "Soft-launched or unreleased Mobile Games" },
         toParam: "unreleased",
-        desc: "The mobile free-to-play games I worked on which were either only soft-launched or global launched long after I left the company",
+        desc: { en: "The mobile free-to-play games I worked on which were either only soft-launched or global launched long after I left the company", fr: "The mobile free-to-play games I worked on which were either only soft-launched or global launched long after I left the company" },
         projects: [
             {
                 name: "Blast Raiders (Blast Explorers)",
@@ -147,18 +186,11 @@ export const portfolio: Section[] = [
                 desktopImg: projectBlastDesktop,
                 alt: "Blast Raiders Google Play image",
                 link: "https://www.youtube.com/embed/X7mzMiW8zDM?si=cN_CBptNN9GcqSBW",
-                projectType: "Mobile Game - Production (soft-launch)",
-                role: "Main Game Designer",
-                place: "Product Madness - Poland - Remote",
+                projectType: { en: "Mobile Game - Production (soft-launch)", fr: "Mobile Game - Production (soft-launch)" },
+                role: { en: "Main Game Designer", fr: "Main Game Designer" },
+                place: { en: "Product Madness - Poland - Remote", fr: "Product Madness - Poland - Remote" },
                 starting: "2022",
-                desc: [
-                    "Blast Raiders is a mobile puzzle game with a match-2 core gameplay in the vein of Toon Blast. Part of the project predated my arrival. The game went through several significant meta pivots over two years, and with each new direction set by the project owner, I took charge of all game design: feature documentation, new level design building blocks, detailed wireframes, and full economy design and implementation (projections, balancing, values implemented via spreadsheet).",
-                    "The first pivot aimed to blend Toon Blast and Coin Master: a level-based core gameplay combined with attack and raid mechanics allowing players to destroy another player's village. The meta revolved around building isometric 3D villages, funded by a fluid soft currency tied to level performance and stealable by opponents.",
-                    "The second pivot shifted the game toward a Royal Match meta, with star-based construction (1 completed level = 1 star). I conducted an in-depth feature and economy retro-game-design of Royal Match, including recreating its events adapted to our own economy, and managed the full rebalancing this pivot required. The constraint was to preserve some form of raid: I designed an adaptation in which raiding allows players to steal free boosters, compatible with the new meta without disrupting its balance.",
-                    "I designed and implemented 450 levels, along with an obstacle matrix: prior to level design, it defined precisely which obstacles appeared in which levels, planned unlocks, calculated distributions, and verified they matched the original intent, itself formalized in a separate sheet defining each obstacle's weight and expected frequency across the first 450 levels.",
-                    "I also worked on multiple FTUE versions, each iteration informed by per-step data analysis: churn rate at each tutorial step, hypotheses on causes, and implementation of solutions. I also collaborated with artists on the visual themes of events and obstacles: reference sources, moodboard validation.",
-                    "The game remained in soft launch throughout the project, getting closer with each new version to the monetization and D7 retention targets that would have greenlit a global launch, without ever reaching them.",
-                ],
+                desc: { en: blastDesc, fr: blastDesc },
             },
             {
                 name: "Tennis Manager Mobile",
@@ -166,17 +198,11 @@ export const portfolio: Section[] = [
                 img: projectTennis,
                 alt: "Tennis Manager loading page",
                 link: "https://www.youtube.com/embed/h4tO2lms_Ck?si=zgv0uTyu0NsDoMNJ",
-                projectType: "Mobile Game - Preprod to Production (soft-launch)",
-                role: "Lead Game Designer",
-                place: "Rebound CG - France",
+                projectType: { en: "Mobile Game - Preprod to Production (soft-launch)", fr: "Mobile Game - Preprod to Production (soft-launch)" },
+                role: { en: "Lead Game Designer", fr: "Lead Game Designer" },
+                place: { en: "Rebound CG - France", fr: "Rebound CG - France" },
                 starting: "2017",
-                desc: [
-                    "Tennis Manager Mobile is the first tennis management game on mobile, developed under the Mouratoglou licence, named after the coach of Serena Williams and owner of a tennis academy. The initial brief set two strong constraints: coach only one player at a time, and manage a campus symbolically representing the Mouratoglou Academy.",
-                    "To ground the game in professional tennis reality, I integrated the full tennis ruleset but also the full ATP ruleset (points calculation, yearly rankings, tournament draw rules based on registered players' rankings, mandatory participation requirements for top-ranked players, etc.); all competitions in the game existed in real life, with the correct surface type and a consistent calendar. I also had two direct exchanges with Patrick Mouratoglou to understand the strategies and priorities of a real high-level coach, which I integrated into the game mechanics.",
-                    "The game draws inspiration from football management games: training, stat progression, tournament selection, and mostly automated matches. The player can however define strategy by adjusting parameters on an offensive/defensive spectrum, and intervene during the match to change those parameters (with penalties) to adapt to the situation.",
-                    "I handled all game design: feature documentation, balancing, initial economy. When simulation engine imperfections were identified, our approaches diverged: I advocated for fixing the engine itself, while the studio director opted for overlay fixes, which he designed and implemented himself.",
-                    "The game was soft-launched but did not find its audience. I left after two years, before its global launch, which happened later with additional features.",
-                ],
+                desc: { en: tennisDesc, fr: tennisDesc },
             },
             {
                 name: "Urban Rivals Squad RPG",
@@ -184,16 +210,11 @@ export const portfolio: Section[] = [
                 img: projectRivals,
                 alt: "Some Urban Rivals characters",
                 link: "",
-                projectType: "Mobile Game - Concept to Alpha",
-                role: "Main Game Designer",
-                place: "Boostr/Acute Games - France",
+                projectType: { en: "Mobile Game - Concept to Alpha", fr: "Mobile Game - Concept to Alpha" },
+                role: { en: "Main Game Designer", fr: "Main Game Designer" },
+                place: { en: "Boostr/Acute Games - France", fr: "Boostr/Acute Games - France" },
                 starting: "2015",
-                desc: [
-                    "Urban Rivals Squad RPG is a mobile adaptation of Urban Rivals, a collectible card game, into a turn-based squad RPG in the vein of Summoners War: a team of fighters, each with a basic attack and two special abilities with cooldowns, targeting enemies or allies depending on their nature.",
-                    "The central twist, which I designed, is the synergy system: when a clan member attacks, other members of the same clan in the team have a chance to automatically perform a free attack of lesser power. These synergies can also apply status effects (burn, poison, haste, shield) that feed into clan-specific combos, such as \"exploit burn,\" which amplifies damage on already-burning targets. The combos emerged from a mix of gaming culture references, adaptation of the original card game's fighter abilities, and narrative elements from the licence: a fire-oriented clan, for example, naturally develops synergies around burn.",
-                    "Although I was not the licence manager, I drew on my licence management experience from other projects to integrate as many Urban Rivals lore elements as possible into the gameplay.",
-                    "I handled all game design on this project over just over a year. The game reached alpha, sought a publisher without success, and was then shelved.",
-                ],
+                desc: { en: rivalsDesc, fr: rivalsDesc },
             },
         ],
     },
