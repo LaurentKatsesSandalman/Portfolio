@@ -26,8 +26,8 @@ function DocSectionPage(){
         <>
         <Link  to={initialPage} className={styles.arrow}><img  className={styles.arrowimg} alt="Arrow back pictogram" src={arrowIcon} />Home</Link>
         <div className={styles.main}>
-        <h2 className={styles.h2}>{currentSection.section}</h2>
-        <p className={styles.desc}>{currentSection.desc}</p>
+        <h2 className={styles.h2}>{currentSection.section[lang]}</h2>
+        <p className={styles.desc}>{currentSection.desc[lang]}</p>
         <div className={styles.projectsList}>
         {currentSection.projects.map((project)=>(
             <DocProjectButton
@@ -36,7 +36,7 @@ function DocSectionPage(){
             img={project.img}
             name={project.name}
 			company={project.company}
-			subtitle={project.subtitle}
+			subtitle={project.subtitle[lang]}
             alt={project.alt}
             />
         ))}

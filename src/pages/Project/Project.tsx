@@ -8,6 +8,7 @@ import arrowIcon from "../../assets/icons/arrow.png";
 import { useEffect, useState } from "react";
 import { useModeLang } from "../../hooks/useModeLang";
 import { uiStrings } from "../../i18n/uiStrings";
+import { techIconMap } from "../../data/techIcons";
 
 function ProjectPage() {
     const { section } = useParams();
@@ -36,7 +37,8 @@ function ProjectPage() {
     let img: string | undefined;
     let alt = "";
     let link = "";
-    let metaItems: { label: string; value: string }[] = [];
+    let isDevMode = false;
+    let metaItems: { label: string; value: string | string[] }[] = [];
     let descParagraphs: string[] = [];
 
     if (mode === "gd") {
@@ -65,6 +67,7 @@ function ProjectPage() {
             img = currentProject.img;
             alt = currentProject.alt;
             link = currentProject.link;
+            isDevMode = true;
             metaItems = [
                 { label: strings.technologies, value: currentProject.technos },
                 { label: strings.duration, value: currentProject.duration[lang] },
@@ -97,6 +100,16 @@ function ProjectPage() {
                             src={img}
                             alt={alt}
                         />
+                        {isDevMode && link && (
+                            <a
+                                className={styles.projectLink}
+                                href={link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                {strings.visitProject} ↗
+                            </a>
+                        )}
                     </div>
                 </div>
                 <div className={styles.texteBlock}>
@@ -104,12 +117,27 @@ function ProjectPage() {
                         {metaItems.map((item) => (
                             <div className={styles.metaItem} key={item.label}>
                                 <span className={styles.metaLabel}>{item.label}</span>
-                                <span className={styles.metaValue}>{item.value}</span>
+                                {Array.isArray(item.value) ? (
+                                    <div className={styles.technosBadges}>
+                                        {item.value.map((tech) => {
+                                            const icon = techIconMap[tech];
+                                            return icon ? (
+                                                <span className={styles.techBadge} key={tech} title={tech}>
+                                                    <img src={icon.src} alt={icon.label} className={styles.techIcon} />
+                                                </span>
+                                            ) : (
+                                                <span className={styles.techBadge} key={tech}>{tech}</span>
+                                            );
+                                        })}
+                                    </div>
+                                ) : (
+                                    <span className={styles.metaValue}>{item.value}</span>
+                                )}
                             </div>
                         ))}
                     </div>
                     <div className={styles.h3container}>
-                        <h3>{strings.whatIDid}</h3>
+                        <h3>{isDevMode ? strings.aboutSection : strings.whatIDid}</h3>
                         {descParagraphs.map((item, index) =>
                             item.startsWith("http") ? (
                                 <a
@@ -127,7 +155,7 @@ function ProjectPage() {
                             ),
                         )}
                     </div>
-                    {link && (
+                    {!isDevMode && link && (
                         <iframe
                             className={styles.projectVideo}
                             width="560"

@@ -7,8 +7,10 @@ import type { Localized } from "../interfaces/i18n";
 export const uiStrings: Localized<{
     home: string;
     whatIDid: string;
+    aboutSection: string;
     technologies: string;
     duration: string;
+    visitProject: string;
     projectType: string;
     role: string;
     place: string;
@@ -21,8 +23,10 @@ export const uiStrings: Localized<{
     en: {
         home: "Home",
         whatIDid: "What I did",
+        aboutSection: "About",
         technologies: "Technologies",
         duration: "Duration",
+        visitProject: "See project",
         projectType: "Project Type",
         role: "Role",
         place: "Place",
@@ -35,8 +39,10 @@ export const uiStrings: Localized<{
     fr: {
         home: "Accueil",
         whatIDid: "Ce que j'ai fait",
+        aboutSection: "À propos",
         technologies: "Technos",
         duration: "Durée",
+        visitProject: "Voir le projet",
         projectType: "Type de projet",
         role: "Rôle",
         place: "Lieu",

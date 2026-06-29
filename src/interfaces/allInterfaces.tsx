@@ -28,7 +28,7 @@ export interface DevProject {
     img: string;
     alt: string;
     link: string;
-    technos: string;
+    technos: string[];
     duration: Localized<string>;
     desc: Localized<string[]>;
 }
@@ -40,28 +40,28 @@ export interface DevSection {
     projects: DevProject[];
 }
 
-// Docs (GD-only, no Dev equivalent) — not yet part of the bilingual merge, stays English-only for now.
 export interface DocSection {
-    section: string;
+    section: Localized<string>;
     toParam: string;
-    desc: string;
+    desc: Localized<string>;
     projects: DocProject[];
 }
 
 export interface DocProject {
     name: string;
-	company:string;
-	subtitle: string;
+    company: string;
+    subtitle: Localized<string>;
     toParam: string;
     img: string;
     alt: string;
-    desc: string[];
-	pdf: pdfBloc[];
+    desc: Localized<string[]>;
+    pdf: pdfBloc[];
 }
 
 export interface pdfBloc {
-    pdfTitle: string;
-	pdfDesc: string[];
+    pdfTitle: Localized<string>;
+    pdfDesc: Localized<string[]>;
     pdfLink: string;
+    pdfName: string;
     pdfHeight: number;
 }

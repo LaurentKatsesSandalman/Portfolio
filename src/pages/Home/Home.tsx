@@ -4,14 +4,20 @@ import photo from "../../assets/img/temp_profil_3.png";
 import mobile from "../../assets/img/logos/logo-mobile.png";
 import fb from "../../assets/img/logos/logo-fb.png";
 import unreleased from "../../assets/img/logos/logo-unreleased.png";
-import docs from "../../assets/img/logos/logo-docs1.jpg"
-import { devLogos } from "../../data/devProjects";
+import docsImg from "../../assets/img/logos/logo-docs1.jpg";
+import { devLogos, devPortfolio } from "../../data/devProjects";
+import { portfolio } from "../../data/projects";
+import { docs } from "../../data/docProjects";
 import { profiles } from "../../data/profile";
 import { useModeLang } from "../../hooks/useModeLang";
 
 function HomePage() {
     const { mode, lang } = useModeLang();
     const profile = profiles[mode];
+
+    const gdMobile    = portfolio.find(s => s.toParam === "mobile")!;
+    const gdFb        = portfolio.find(s => s.toParam === "fb")!;
+    const gdUnreleased = portfolio.find(s => s.toParam === "unreleased")!;
 
     return (
         <div className={styles.mainContainer} >
@@ -54,25 +60,25 @@ function HomePage() {
                     <>
                         <SectionButton
                             image={mobile}
-                            name="Released Mobile Games"
+                            name={gdMobile.section[lang]}
                             to="portfolio/mobile"
                             ariaLabel="to Released Mobile Games section"
                         />
                         <SectionButton
                             image={unreleased}
-                            name="Soft-launched or unreleased"
+                            name={gdUnreleased.section[lang]}
                             to="portfolio/unreleased"
                             ariaLabel="to soft-launched or unreleased Mobile Games section"
                         />
                         <SectionButton
                             image={fb}
-                            name="Facebook Social Games"
+                            name={gdFb.section[lang]}
                             to="portfolio/fb"
                             ariaLabel="to Facebook Social Games section"
                         />
                         <SectionButton
-                            image={docs}
-                            name="Design Work & Analysis"
+                            image={docsImg}
+                            name={docs[0].section[lang]}
                             to="docs/docs"
                             ariaLabel="to Design Docs section"
                         />
@@ -81,21 +87,21 @@ function HomePage() {
                     <>
                         <SectionButton
                             image={devLogos.pro}
-                            name="Professionnel"
+                            name={devPortfolio[0].section[lang]}
                             to="portfolio/pro"
-                            ariaLabel="vers la section projets professionnels"
+                            ariaLabel="to professional projects section"
                         />
                         <SectionButton
                             image={devLogos.groupe}
-                            name="En groupe"
+                            name={devPortfolio[1].section[lang]}
                             to="portfolio/groupe"
-                            ariaLabel="vers la section projets en groupe"
+                            ariaLabel="to group projects section"
                         />
                         <SectionButton
                             image={devLogos.solo}
-                            name="En solo"
+                            name={devPortfolio[2].section[lang]}
                             to="portfolio/solo"
-                            ariaLabel="vers la section projets en solo"
+                            ariaLabel="to solo projects section"
                         />
                     </>
                 )}

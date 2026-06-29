@@ -4,7 +4,13 @@
       "Skill(run)",
       "Skill(run:*)",
       "Bash(grep -Hm1 '^description:' .claude/skills/*/SKILL.md)",
-      "Bash(ls .claude/skills)"
+      "Bash(ls .claude/skills)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:www.anthropic.com)",
+      "WebFetch(domain:simpleicons.org)",
+      "WebFetch(domain:cdn.simpleicons.org)",
+      "Bash(curl -s \"https://raw.githubusercontent.com/simple-icons/simple-icons/develop/simple-icons.json\")",
+      "WebFetch(domain:claude.ai)"
     ]
   }
 }
