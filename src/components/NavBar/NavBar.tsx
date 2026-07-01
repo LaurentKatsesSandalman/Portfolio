@@ -15,7 +15,6 @@ function NavBar(){
 
     function switchMode(newMode: Mode) {
         if (newMode === mode) return;
-        // GD and Dev project slugs don't overlap, so a mode switch always drops to that mode's home.
         navigate(`/${newMode}/${lang}`);
     }
 
@@ -34,54 +33,73 @@ function NavBar(){
 
     return(
         <div className={styles.navbar}>
-       <Link to={`/${mode}/${lang}`} aria-label="Back to home page"> <img className={styles.logo} src={Sandals} alt="Sandales icon"/></Link>
-        <div className={styles.h1container}>
-		<p className={styles.h1}>Laurent "Sandalman"</p>
-		<p className={styles.h2}>{profile.navTagline[lang]}</p>
-		<div className={styles.mainFlex}>
-			<p className={styles.pRight}>laurent.durup@proton.me</p>
-			<div className={styles.rowFlex}>
-		                   <a href="https://www.linkedin.com/in/laurent-durup/" target="_blank" rel="noopener noreferrer"><img src={linkedInIcon} alt="Linkedin icon" className={styles.pictoLink} /></a>
-                    <a href="https://www.github.com/LaurentKatsesSandalman" target="_blank" rel="noopener noreferrer"><img src={githubIcon} alt="GitHub icon" className={styles.pictoLink}/></a>
+            <Link to={`/${mode}/${lang}`} aria-label="Back to home page">
+                <img className={styles.logo} src={Sandals} alt="Sandales icon"/>
+            </Link>
 
+            <div className={styles.h1container}>
+                <p className={styles.h1}>Laurent "Sandalman"</p>
 
-                    <p  className={styles.pRight}>(+33) 6 76 43 48 08</p></div>
+                <div className={styles.modeSlider} role="group" aria-label="Switch portfolio mode">
+                    <span
+                        className={`${styles.sliderLabel} ${mode === "gd" ? styles.sliderLabelActive : styles.sliderLabelInactive}`}
+                        onClick={() => switchMode("gd")}
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => e.key === "Enter" && switchMode("gd")}
+                        aria-pressed={mode === "gd"}
+                    >
+                        <span className={styles.labelFull}>{profiles["gd"].navTagline[lang]}</span>
+                        <span className={styles.labelShort}>GD</span>
+                    </span>
+                    <button
+                        type="button"
+                        className={styles.sliderTrack}
+                        onClick={() => switchMode(mode === "gd" ? "dev" : "gd")}
+                        aria-label={`Switch to ${mode === "gd" ? "Dev" : "GD"} mode`}
+                    >
+                        <span className={`${styles.sliderCircle} ${mode === "dev" ? styles.sliderCircleRight : ""}`} />
+                    </button>
+                    <span
+                        className={`${styles.sliderLabel} ${mode === "dev" ? styles.sliderLabelActive : styles.sliderLabelInactive}`}
+                        onClick={() => switchMode("dev")}
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => e.key === "Enter" && switchMode("dev")}
+                        aria-pressed={mode === "dev"}
+                    >
+                        <span className={styles.labelFull}>{profiles["dev"].navTagline[lang]}</span>
+                        <span className={styles.labelShort}>Dev</span>
+                    </span>
+                </div>
 
-                   </div></div>
-        <div className={styles.toggleGroup}>
-            <div className={styles.toggleRow} role="group" aria-label="Switch portfolio">
-                <button
-                    type="button"
-                    className={mode === "gd" ? styles.toggleButtonActive : styles.toggleButton}
-                    onClick={() => switchMode("gd")}
-                >
-                    GD
-                </button>
-                <button
-                    type="button"
-                    className={mode === "dev" ? styles.toggleButtonActive : styles.toggleButton}
-                    onClick={() => switchMode("dev")}
-                >
-                    Dev
-                </button>
+                <p className={styles.mobileTagline}>{profile.navTagline[lang]}</p>
+
+                <div className={styles.mainFlex}>
+                    <p className={styles.pRight}>laurent.durup@proton.me</p>
+                    <div className={styles.rowFlex}>
+                        <a href="https://www.linkedin.com/in/laurent-durup/" target="_blank" rel="noopener noreferrer">
+                            <img src={linkedInIcon} alt="Linkedin icon" className={styles.pictoLink} />
+                        </a>
+                        <a href="https://www.github.com/LaurentKatsesSandalman" target="_blank" rel="noopener noreferrer">
+                            <img src={githubIcon} alt="GitHub icon" className={styles.pictoLink}/>
+                        </a>
+                        <p className={styles.pRight}>(+33) 6 76 43 48 08</p>
+                    </div>
+                </div>
             </div>
-            <div className={styles.toggleRow} role="group" aria-label="Switch language">
-                <button
-                    type="button"
-                    className={lang === "en" ? styles.toggleButtonActive : styles.toggleButton}
-                    onClick={() => switchLang("en")}
+
+            <div className={styles.langSelectWrapper}>
+                <select
+                    className={styles.langSelect}
+                    value={lang}
+                    onChange={(e) => switchLang(e.target.value as Lang)}
+                    aria-label="Switch language"
                 >
-                    EN
-                </button>
-                <button
-                    type="button"
-                    className={lang === "fr" ? styles.toggleButtonActive : styles.toggleButton}
-                    onClick={() => switchLang("fr")}
-                >
-                    FR
-                </button>
+                    <option value="en">EN</option>
+                    <option value="fr">FR</option>
+                </select>
             </div>
-        </div>
         </div>
     )
 }
