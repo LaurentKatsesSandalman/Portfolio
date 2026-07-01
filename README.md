@@ -1,8 +1,16 @@
-Le portfolio de Laurent Durup, aka Sandalman, Senior Game Designer mobile-FTP
+Portfolio de Laurent Durup, aka Sandalman, Senior Game Designer mobile-F2P avec compétences de Dév fullstack.
 
-Réalisé en React
+Réalisé en React.
 
-[Hébergé sur GitHub pages](https://laurentkatsessandalman.github.io/PortfolioGD/)
+[Hébergé sur GitHub pages](https://laurentkatsessandalman.github.io/Portfolio/)
+
+---
+
+Portfolio of Laurent Durup, aka Sandalman, Senior Game Designer Mobile-F2P with Full-stack Dev skills.
+
+Built with React.
+
+[Hosted on GitHub pages](https://laurentkatsessandalman.github.io/Portfolio/)
 
 ___
 <p align="left">
@@ -27,5 +35,8 @@ ___
 <p align="left">
   <a href="https://git-scm.com/" target="_blank" rel="noreferrer">
     <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/>
+  </a>
+  <a href="https://www.anthropic.com/" target="_blank" rel="noreferrer">
+    <img src="https://cdn.simpleicons.org/anthropic/e3a458" alt="Claude AI" width="40" height="40"/>
   </a>
 </p>
