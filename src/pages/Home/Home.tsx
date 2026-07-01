@@ -1,13 +1,24 @@
-//import { useEffect, useState } from "react";
 import styles from "./Home.module.css";
 import SectionButton from "../../components/SectionButton/SectionButton";
 import photo from "../../assets/img/temp_profil_3.png";
 import mobile from "../../assets/img/logos/logo-mobile.png";
 import fb from "../../assets/img/logos/logo-fb.png";
 import unreleased from "../../assets/img/logos/logo-unreleased.png";
-import docs from "../../assets/img/logos/logo-docs1.jpg"
+import docsImg from "../../assets/img/logos/logo-docs1.jpg";
+import { devLogos, devPortfolio } from "../../data/devProjects";
+import { portfolio } from "../../data/projects";
+import { docs } from "../../data/docProjects";
+import { profiles } from "../../data/profile";
+import { useModeLang } from "../../hooks/useModeLang";
 
 function HomePage() {
+    const { mode, lang } = useModeLang();
+    const profile = profiles[mode];
+
+    const gdMobile    = portfolio.find(s => s.toParam === "mobile")!;
+    const gdFb        = portfolio.find(s => s.toParam === "fb")!;
+    const gdUnreleased = portfolio.find(s => s.toParam === "unreleased")!;
+
     return (
         <div className={styles.mainContainer} >
             <div className={styles.presentationContainer}>
@@ -19,68 +30,81 @@ function HomePage() {
                     />
                 </div>
                 <div className={styles.presentationText}>
-                    <h1 className={styles.h1top}>Senior Game Designer</h1>
-                    <h2 className={styles.h2top}>
-                        Free-to-play & Mobile Games
-                    </h2>
-                    <div className={styles.badgeRow}>
-                        <span className={styles.badge}>10+ Years Experience</span>
-                        <span className={styles.badge}>Mobile & Facebook F2P</span>
-                        <span className={styles.badge}>Concept to Live-Ops</span>
-                    </div>
-                    <p className={styles.pblock}>
-                        Hi!</p>
-						<p className={styles.pblock}>
-                        I’m a Senior Game Designer, with 10+ years
-                        experience in the Mobile Free-To-Play area, both Casual
-                        and MidCore.</p>
-						  <p className={styles.pblock}>
-						I’m able to handle the Game Design of a
-                        project from initial concept to live-ops. I’m a
-                        generalist/versatile Game designer, but with a stronger
-                        analytical/problem-solving side. Bringing consistency is
-                        my strong point, especially when it comes to connecting
-                        core gameplay with meta.
-                    </p>
+                    <h1 className={styles.h1top}>{profile.heroTitle[lang]}</h1>
+                    {profile.heroSubtitle && (
+                        <h2 className={styles.h2top}>
+                            {profile.heroSubtitle[lang]}
+                        </h2>
+                    )}
+                    {profile.badges && (
+                        <div className={styles.badgeRow}>
+                            {profile.badges[lang].map((badge) => (
+                                <span className={styles.badge} key={badge}>{badge}</span>
+                            ))}
+                        </div>
+                    )}
+                    {profile.bio[lang].map((paragraph, index) => (
+                        <p className={styles.pblock} key={index}>{paragraph}</p>
+                    ))}
                 </div>
             </div>
 
             <div className={styles.portfolioIntro}>
-                <h2 className={styles.h2middle}>GD Portfolio</h2>
-                <p className={styles.pblock}>
-                            In this section, you’ll find most of the free-to-play games I worked on as a Game Designer.</p>
-                            <p className={styles.pblock}>
-                            Games I helped create as a Company Lead are not mentioned, as I wasn’t one of the Main Designers, but more of an unblocker or facilitator.
-                        </p>
-                        <p className={styles.pblock}>
-                            I have also discarded my early youth gamified animation projects.
-                        </p>
+                <h2 className={styles.h2middle}>{profile.portfolioHeading[lang]}</h2>
+                {profile.portfolioIntro[lang].map((paragraph, index) => (
+                    <p className={styles.pblock} key={index}>{paragraph}</p>
+                ))}
             </div>
             <div className={styles.projectsContainer}>
-                <SectionButton
-                    image={mobile}
-                    name="Released Mobile Games"
-                    to="portfolio/mobile"
-                    ariaLabel="to Released Mobile Games section"
-                />
-                <SectionButton
-                    image={unreleased}
-                    name="Soft-launched or unreleased"
-                    to="portfolio/unreleased"
-                    ariaLabel="to soft-launched or unreleased Mobile Games section"
-                />
-				<SectionButton
-                    image={fb}
-                    name="Facebook Social Games"
-                    to="portfolio/fb"
-                    ariaLabel="to Facebook Social Games section"
-                />
-				<SectionButton
-                    image={docs}
-                    name="Design Work & Analysis"
-                    to="docs/docs"
-                    ariaLabel="to Design Docs section"
-                />
+                {mode === "gd" ? (
+                    <>
+                        <SectionButton
+                            image={mobile}
+                            name={gdMobile.section[lang]}
+                            to="portfolio/mobile"
+                            ariaLabel="to Released Mobile Games section"
+                        />
+                        <SectionButton
+                            image={unreleased}
+                            name={gdUnreleased.section[lang]}
+                            to="portfolio/unreleased"
+                            ariaLabel="to soft-launched or unreleased Mobile Games section"
+                        />
+                        <SectionButton
+                            image={fb}
+                            name={gdFb.section[lang]}
+                            to="portfolio/fb"
+                            ariaLabel="to Facebook Social Games section"
+                        />
+                        <SectionButton
+                            image={docsImg}
+                            name={docs[0].section[lang]}
+                            to="docs/docs"
+                            ariaLabel="to Design Docs section"
+                        />
+                    </>
+                ) : (
+                    <>
+                        <SectionButton
+                            image={devLogos.pro}
+                            name={devPortfolio[0].section[lang]}
+                            to="portfolio/pro"
+                            ariaLabel="to professional projects section"
+                        />
+                        <SectionButton
+                            image={devLogos.groupe}
+                            name={devPortfolio[1].section[lang]}
+                            to="portfolio/groupe"
+                            ariaLabel="to group projects section"
+                        />
+                        <SectionButton
+                            image={devLogos.solo}
+                            name={devPortfolio[2].section[lang]}
+                            to="portfolio/solo"
+                            ariaLabel="to solo projects section"
+                        />
+                    </>
+                )}
             </div>
         </div>
     );

@@ -1,4 +1,6 @@
-export interface Project {
+import type { Localized } from "./i18n";
+
+export interface GDProject {
     name: string;
 	shorterName?: string;
     toParam: string;
@@ -6,41 +8,60 @@ export interface Project {
 	desktopImg?:string;
     alt: string;
     link: string;
-    projectType: string;
-	role: string;
-	place: string;
+    projectType: Localized<string>;
+	role: Localized<string>;
+	place: Localized<string>;
     starting: string;
-    desc: string[];
+    desc: Localized<string[]>;
 }
 
-export interface Section {
-    section: string;
+export interface GDSection {
+    section: Localized<string>;
     toParam: string;
-    desc: string;
-    projects: Project[];
+    desc: Localized<string>;
+    projects: GDProject[];
+}
+
+export interface DevProject {
+    name: string;
+    toParam: string;
+    img: string;
+    alt: string;
+    link: string;
+    technos: string[];
+    duration: Localized<string>;
+    desc: Localized<string[]>;
+}
+
+export interface DevSection {
+    section: Localized<string>;
+    toParam: string;
+    desc: Localized<string>;
+    projects: DevProject[];
 }
 
 export interface DocSection {
-    section: string;
+    section: Localized<string>;
     toParam: string;
-    desc: string;
+    desc: Localized<string>;
     projects: DocProject[];
 }
 
 export interface DocProject {
     name: string;
-	company:string;
-	subtitle: string;
+    company: string;
+    subtitle: Localized<string>;
     toParam: string;
     img: string;
     alt: string;
-    desc: string[];
-	pdf: pdfBloc[];
+    desc: Localized<string[]>;
+    pdf: pdfBloc[];
 }
 
 export interface pdfBloc {
-    pdfTitle: string;
-	pdfDesc: string[];
+    pdfTitle: Localized<string>;
+    pdfDesc: Localized<string[]>;
     pdfLink: string;
+    pdfName: string;
     pdfHeight: number;
 }

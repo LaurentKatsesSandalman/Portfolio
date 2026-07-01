@@ -6,6 +6,7 @@ import arrowIcon from "../../assets/icons/arrow.png";
 import type { DocProject, DocSection } from "../../interfaces/allInterfaces";
 import { docs } from "../../data/docProjects";
 import PdfComponent from "../../components/PdfComponent/PdfComponent";
+import { useModeLang } from "../../hooks/useModeLang";
 
 function DocProjectPage() {
     const { section } = useParams();
@@ -17,6 +18,7 @@ function DocProjectPage() {
     const currentProject: DocProject | undefined =
         currentSection?.projects.find((item) => item.toParam === project);
 
+    const { lang } = useModeLang();
     const location = useLocation();
     const initialPage = location.state?.from;
 
@@ -40,7 +42,7 @@ function DocProjectPage() {
             <div className={styles.main}>
                 <h2 className={styles.h2}>{currentProject.name}</h2>
                 <div className={styles.docDescBlock}>
-                    {currentProject.desc.map((item, index) =>
+                    {currentProject.desc[lang].map((item, index) =>
                         item.startsWith("http") ? (
                             <a
                                 className={styles.anchor}
@@ -58,8 +60,8 @@ function DocProjectPage() {
                 {currentProject.pdf.map((item, index) => (
                     <PdfComponent
                         key={index}
-                        pdfTitle={item.pdfTitle}
-                        pdfDesc={item.pdfDesc}
+                        pdfTitle={item.pdfTitle[lang]}
+                        pdfDesc={item.pdfDesc[lang]}
                         pdfLink={item.pdfLink}
                         pdfHeight={item.pdfHeight}
                     />

@@ -1,7 +1,8 @@
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
-import { Outlet } from "react-router";
+import { Navigate, Outlet, useParams } from "react-router";
+import { LANGS, MODES, type Lang, type Mode } from "./interfaces/i18n";
 //import { CountriesProvider } from "./contexts/CountriesContext";
 
 
@@ -10,6 +11,12 @@ import { Outlet } from "react-router";
 
 //FUNCTION APP
 function App() {
+  const { mode, lang } = useParams();
+
+  if (!MODES.includes(mode as Mode) || !LANGS.includes(lang as Lang)) {
+    return <Navigate to="/dev/en" replace />;
+  }
+
   return (
     //<Provider  >
     <>

@@ -4,7 +4,17 @@
       "Skill(run)",
       "Skill(run:*)",
       "Bash(grep -Hm1 '^description:' .claude/skills/*/SKILL.md)",
-      "Bash(ls .claude/skills)"
+      "Bash(ls .claude/skills)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:www.anthropic.com)",
+      "WebFetch(domain:simpleicons.org)",
+      "WebFetch(domain:cdn.simpleicons.org)",
+      "Bash(curl -s \"https://raw.githubusercontent.com/simple-icons/simple-icons/develop/simple-icons.json\")",
+      "WebFetch(domain:claude.ai)",
+      "PowerShell(cd \"d:\\\\Repositories\\\\PRO\\\\PortefolioGD\" && npm run dev -- --port 5174 2>&1 &)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5174/)",
+      "Bash(node .tmp-screenshot-qa.mjs)",
+      "Bash(node .tmp-screenshot-home.mjs)"
     ]
   }
 }

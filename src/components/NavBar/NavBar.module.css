@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -7,33 +7,123 @@
     border-bottom: 2px solid var(--accent-color);
 }
 
-.logo{
+.logo {
     aspect-ratio: 1/1;
     height: 3rem;
     background-color: var(--secondary-color);
     border-radius: 30%;
 }
 
-.h1container{
-margin: 0 auto;
-	
+.h1container {
+    margin: 0 auto;
 }
 
-.h1{
-    
-	font-size: var(--size-h1);
-	font-family: var(--font-title);
-	text-align: center;
-	font-weight: 700;
+.h1 {
+    font-size: var(--size-h1);
+    font-family: var(--font-title);
+    text-align: center;
+    font-weight: 700;
 }
 
-.h2{
-    
-	/* font-size: var(--size-h2); */
-	font-family: var(--font-title);
-	text-align: center;
-	font-style: italic;
+/* ─── Mode slider ──────────────────────────────────────── */
+
+.modeSlider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 4px 0 2px;
 }
+
+.sliderLabel {
+    cursor: pointer;
+    font-family: var(--font-title);
+    font-style: italic;
+    font-size: var(--size-default);
+    transition: color 0.25s ease, opacity 0.25s ease;
+    user-select: none;
+}
+
+.sliderLabelActive {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.sliderLabelInactive {
+    color: var(--secondary-color);
+    opacity: 0.5;
+}
+
+.sliderLabelInactive:hover {
+    opacity: 0.85;
+}
+
+/* Full title on desktop, short label on mobile */
+.labelFull {
+    display: none;
+}
+.labelShort {
+    display: inline;
+}
+
+@media (min-width: 768px) {
+    .labelFull {
+        display: inline;
+    }
+    .labelShort {
+        display: none;
+    }
+}
+
+/* Track and circle */
+.sliderTrack {
+    position: relative;
+    width: 48px;
+    height: 26px;
+    border: 2px solid var(--accent-color);
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.sliderCircle {
+    position: absolute;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    top: 50%;
+    left: 3px;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+/* left: 3px + 22px = 25px; right gap = 44 - 25 - 16 = 3px (symmetric) */
+.sliderCircleRight {
+    transform: translateY(-50%) translateX(22px);
+}
+
+/* Active mode full title — mobile only */
+.mobileTagline {
+    display: block;
+    font-family: var(--font-title);
+    font-style: italic;
+    text-align: center;
+    color: var(--accent-color);
+    margin: 1px 0 3px;
+}
+
+@media (min-width: 768px) {
+    .mobileTagline {
+        display: none;
+    }
+}
+
+/* ─── Contact row ──────────────────────────────────────── */
 
 .pictoLink {
     aspect-ratio: 1/1;
@@ -46,39 +136,57 @@ margin: 0 auto;
     transform: scale(1.15);
 }
 
-.rightblock{
+.rowFlex {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 6px;
+    justify-content: center;
+}
+
+.mainFlex {
     display: flex;
     flex-direction: column;
-    justify-content: center;   
+    align-items: center;
 }
 
-.mailTel{
-    display: flex;
-    flex-direction: column;
+@media (min-width: 768px) {
+    .mainFlex {
+        flex-direction: row;
+    }
 }
 
-.picto{
-    margin: 3px auto;
+/* ─── Lang dropdown ────────────────────────────────────── */
+
+.langSelectWrapper {
+    position: relative;
+    flex-shrink: 0;
+    align-self: flex-start;
+    padding-top: 4px;
 }
 
-.rowFlex{
-	display: flex;
-	align-items: center;
-	gap: 6px;
-	margin-left: 6px;
-	justify-content: center;
+.langSelect {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: var(--secondary-bg-color);
+    color: var(--secondary-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 999px;
+    padding: 0.15rem 1.4rem 0.15rem 0.6rem;
+    font-size: calc(var(--size-default) * 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    font-family: var(--font-title);
 }
 
-.mainFlex{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	
-	
-}
-
-@media (min-width: 768px){
-	.mainFlex{
-		flex-direction: row;
-	}
+.langSelectWrapper::after {
+    content: '▾';
+    position: absolute;
+    right: 0.45rem;
+    top: 50%;
+    transform: translateY(-35%);
+    pointer-events: none;
+    color: var(--accent-color);
+    font-size: 0.6rem;
 }

@@ -112,6 +112,48 @@ h3 {
     flex-direction: column;
 }
 
+.technosBadges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.techBadge {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 4px;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.techIcon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    display: block;
+}
+
+.projectLink {
+    display: block;
+    width: fit-content;
+    margin: 0.75rem auto 0;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 0.4rem 1.1rem;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+}
+
+.projectLink:hover {
+    opacity: 0.85;
+}
+
 .metaLabel {
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -143,7 +185,7 @@ h3 {
 }
 
 .metaGrid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
 }
 
 }

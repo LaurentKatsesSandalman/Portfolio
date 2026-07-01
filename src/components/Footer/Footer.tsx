@@ -1,15 +1,20 @@
 // import linkedInIcon from "../../assets/icons/linkedin.png"
 // import githubIcon from "../../assets/icons/github.png"
 import styles from "./Footer.module.css"
+import { useModeLang } from "../../hooks/useModeLang";
+import { uiStrings } from "../../i18n/uiStrings";
 
 function Footer() {
+    const { lang } = useModeLang();
+    const strings = uiStrings[lang];
+
     return (
         <>
             <div className={styles.allblocks}>
                 <div className={styles.centerblock}>
                     <p className={styles.pCenter}>Laurent Durup, aka Sandalman</p>
                     <p className={styles.pCenter}>FRANCE</p>
-                    <p className={styles.pCenter}>Available for remote work</p>
+                    <p className={styles.pCenter}>{strings.availableRemote}</p>
                 </div>
                 {/* <div className={styles.rightblock}> */}
                     {/* <div className={styles.picto} ><a href="https://www.linkedin.com/in/laurent-durup/" target="_blank" rel="noopener noreferrer"><img src={linkedInIcon} alt="Linkedin icon" className={styles.pictoLink} /></a>
