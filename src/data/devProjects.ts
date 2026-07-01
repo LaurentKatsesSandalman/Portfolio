@@ -122,14 +122,14 @@ const quickyDescEn = [
 
 const flashDescEn = [
     "Our fourth and most ambitious group project. The entire cohort was involved.",
-    "It is a Flash-Card creation website, with the ability to search among the community's Decks.",
+    "It is a flash cards creation website, with the ability to search among the community's \"Decks\".",
     "The project is built on a NestJS back-end with micro-services and a React front-end.",
     "On this project, I was mainly responsible for the Deck micro-service on the back-end, and the DeckDetails page with card and quiz creation/editing on the front-end.",
 ];
 
 const solorush1DescEn = [
     "My first project: a \"solo rush\" consisting of creating alone (Figma mockup + HTML + CSS) a single web page, in less than a day, without AI.",
-    "Here is the result, with placeholder content, matching the mockup and responsive (2 versions: mobile and desktop).",
+    "Here is the result, matching the mockup and responsive (2 versions: mobile and desktop).",
 ];
 
 const solorush2DescEn = [
@@ -162,7 +162,7 @@ export const devPortfolio: DevSection[] = [
                 alt: "Fronton de l'école Jeanne d'Arc",
                 link: "https://github.com/LaurentKatsesSandalman/jeanne_darc",
                 technos: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js 16 (App Router, Server Components)", "PostgreSQL"],
-                duration: { en: "3 months (December 2025 – February 2026)", fr: "3 mois (décembre 2025 -février 2026)" },
+                duration: { en: "3 months (December 2025 – February 2026)", fr: "3 mois (décembre 2025 - février 2026)" },
                 desc: { en: jeannedarcDescEn, fr: jeannedarcDesc },
             },
         ],
@@ -179,7 +179,7 @@ export const devPortfolio: DevSection[] = [
                 alt: "image du site Memory",
                 link: "https://laurentkatsessandalman.github.io/memoryCard/",
                 technos: ["HTML Vanilla", "CSS", "JavaScript"],
-                duration: { en: "Approximately 7 days, late March 2025", fr: "Approximativement 7 jours, fin mars 2025 " },
+                duration: { en: "~7 days, late March 2025", fr: "~7 jours, fin mars 2025" },
                 desc: { en: memoryDescEn, fr: memoryDesc },
             },
             {
@@ -189,7 +189,7 @@ export const devPortfolio: DevSection[] = [
                 alt: "image du site DiPiRi",
                 link: "https://laurentkatsessandalman.github.io/Project-2-pages/",
                 technos: ["HTML", "CSS", "JavaScript", "TypeScript", "React"],
-                duration: { en: "Approximately 12 days, late April – early May 2025", fr: "Approximativement 12 jours, fin avril-début mai 2025 " },
+                duration: { en: "~12 days, late April - early May 2025", fr: "~12 jours, fin avril - début mai 2025" },
                 desc: { en: dipiriDescEn, fr: dipiriDesc },
             },
             {
@@ -199,7 +199,7 @@ export const devPortfolio: DevSection[] = [
                 alt: "image du site Quicky",
                 link: "https://github.com/LaurentKatsesSandalman/Project-3",
                 technos: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Express", "MySQL"],
-                duration: { en: "Just under 15 days spread over 6 weeks, mid-May to late June 2025", fr: "Un peu moins de 15 jours répartis sur 6 semaines, mi mai-fin juin 2025" },
+                duration: { en: "~15 days spread over 6 weeks, May/June 2025", fr: "~15j répartis sur 6 semaines, mai/juin 2025" },
                 desc: { en: quickyDescEn, fr: quickyDesc },
             },
             {
@@ -209,7 +209,7 @@ export const devPortfolio: DevSection[] = [
                 alt: "image du site MémoFlip",
                 link: "https://remote-9.wilders.dev/",
                 technos: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "NestJS", "MySQL", "MikroORM"],
-                duration: { en: "Around forty days, from early August to late November 2025", fr: "Une quarantaine de jours, de début août à fin novembre 2025" },
+                duration: { en: "~40 days, early August - late November 2025", fr: "~40 jours, début août - fin novembre 2025" },
                 desc: { en: flashDescEn, fr: flashDesc },
             },
         ],
@@ -226,7 +226,7 @@ export const devPortfolio: DevSection[] = [
                 alt: "image du site Qui est Sandalman ?",
                 link: "https://laurentkatsessandalman.github.io/soloRush1/",
                 technos: ["HTML Vanilla", "CSS"],
-                duration: { en: "Less than a day, early March 2025", fr: "Moins d'un jour, début mars 2025" },
+                duration: { en: "<1 day, early March 2025", fr: "<1 jour, début mars 2025" },
                 desc: { en: solorush1DescEn, fr: solorush1Desc },
             },
             {
@@ -236,7 +236,7 @@ export const devPortfolio: DevSection[] = [
                 alt: "image du site RETRO MdB",
                 link: "https://laurentkatsessandalman.github.io/soloRush2_MdB_Hard/",
                 technos: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Express", "MySQL"],
-                duration: { en: "Two days, mid-June 2025", fr: "Deux jours, mi juin 2025" },
+                duration: { en: "2 days, mid-June 2025", fr: "2 jours, mi-juin 2025" },
                 desc: { en: solorush2DescEn, fr: solorush2Desc },
             },
             {

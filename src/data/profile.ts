@@ -50,17 +50,35 @@ export const profiles: Record<Mode, ModeProfile> = {
     dev: {
         navTagline: { en: "Full-stack Web Developer", fr: "Développeur Web Full-stack" },
         heroTitle: { en: "Full-stack Web Developer", fr: "Développeur Web Full-stack" },
+        heroSubtitle: { en: "From product design to deployment", fr: "De la conception produit au déploiement" },
+        badges: {
+            en: ["10+ Years Product Experience", "User-Centered Vision", "Front-end & Back-end"],
+            fr: ["10+ ans d'expérience produit", "vision centrée utilisateur", "Front-end & Back-end"],
+        },
         bio: {
             fr: [
-                "Vous êtes sur le portfolio de Laurent Durup, aka Sandalman. Après plus de 20 ans dans l'univers du jeu vidéo et de l'animation interactive, dont 10+ comme Game Designer Free-To-Play Mobile, me voici à présent “jeune” Développeur Web.",
-                "En recherche d'emploi, de projets, du Graal, du Sens de la Vie, et d'une nouvelle paire de sandales en cuir taille 42, je vous présente ici mes premiers projets.",
+                "Bonjour !",
+                "Je suis Laurent Durup, aka Sandalman. Après 10+ ans comme Senior Game Designer Free-to-Play Mobile, je suis aujourd'hui développeur web full-stack, en recherche de mon premier poste.",
+                "Ce changement n'efface pas l'expérience précédente, il la complète : j'apporte une vision produit, une sensibilité UX et une capacité de collaboration transverse forgées sur des années de projets live, à un profil technique encore junior mais solide et en progression rapide.",
+                "Junior sur la technique, senior sur tout le reste.",
             ],
             en: [
-                "You’re on the portfolio of Laurent Durup, aka Sandalman. After 20+ years in the world of video games and interactive animation, including 10+ as a Free-To-Play Mobile Game Designer, I am now a “junior” Web Developer.",
-                "Looking for work, projects, the Holy Grail, the Meaning of Life, and a new pair of size 42 leather sandals — here are my first projects.",
+                "Hi!",
+                "I'm Laurent Durup, aka Sandalman. After 10+ years as a Senior Game Designer in Free-to-Play Mobile, I'm now a full-stack web developer, looking for my first role in the field.",
+                "This shift doesn't erase the previous experience — it complements it: I bring product vision, UX sensibility, and cross-functional collaboration skills built over years of live, shipped projects, to a technical profile that's still junior, but solid and improving fast.",
+                "Junior on the tech, senior on everything else.",
             ],
         },
-        portfolioHeading: { en: "Projects", fr: "Projets" },
-        portfolioIntro: { en: [], fr: [] },
+        portfolioHeading: { en: "Dev Portfolio", fr: "Portfolio Dev" },
+        portfolioIntro: {
+            en: [
+                "Here you'll find the projects I built during my training as an Application Developer at Wild Code School, alongside my first professional project and personal projects.",
+                "Each one comes with its context and timeframe, so you can follow my progress since I started.",
+            ],
+            fr: [
+                "Vous trouverez ici les projets réalisés pendant ma formation de Concepteur Développeur d'Applications à la Wild Code School, ainsi que mon premier projet professionnel et mes projets personnels.",
+                "Ils sont présentés avec leur contexte et leur période de réalisation, pour que vous puissiez suivre ma progression depuis mes débuts.",
+            ],
+        },
     },
 };
