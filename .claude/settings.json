@@ -13,7 +13,8 @@
       "WebFetch(domain:claude.ai)",
       "PowerShell(cd \"d:\\\\Repositories\\\\PRO\\\\PortefolioGD\" && npm run dev -- --port 5174 2>&1 &)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5174/)",
-      "Bash(node .tmp-screenshot-qa.mjs)"
+      "Bash(node .tmp-screenshot-qa.mjs)",
+      "Bash(node .tmp-screenshot-home.mjs)"
     ]
   }
 }

@@ -25,12 +25,12 @@ export const profiles: Record<Mode, ModeProfile> = {
             en: [
                 "Hi!",
                 "I'm a Senior Game Designer, with 10+ years of experience in the Mobile Free-To-Play area, both Casual and MidCore.",
-                "I'm able to handle the Game Design of a project from initial concept to live-ops. I'm a generalist/versatile Game Designer, but with a stronger analytical/problem-solving side. Bringing consistency is my strong point, especially when it comes to connecting core gameplay with the meta.",
+                "I'm able to handle the Game Design of a project from initial concept to live-ops. I'm a generalist/versatile Game Designer, but with a stronger analytical/problem-solving side. Bringing consistency is my strong point, especially when it comes to connecting core gameplay with the meta. I have added full-stack development to my profile, for an even more complete understanding of the product chain.",
             ],
             fr: [
                 "Bonjour !",
                 "Je suis Senior Game Designer, avec 10+ ans d'expérience dans le domaine du Mobile Free-To-Play, aussi bien Casual que MidCore.",
-                "Je suis en mesure de prendre en charge le Game Design d'un projet de son concept initial jusqu'aux live ops. Je suis un Game Designer généraliste polyvalent, orienté analyse et résolution de problèmes. Apporter de la cohérence est mon point fort, notamment pour connecter le core gameplay à la méta.",
+                "Je suis en mesure de prendre en charge le Game Design d'un projet de son concept initial jusqu'aux live ops. Je suis un Game Designer généraliste polyvalent, orienté analyse et résolution de problèmes. Apporter de la cohérence est mon point fort, notamment pour connecter le core gameplay à la méta. J'ai ajouté le développement full-stack à mon profil, pour une compréhension encore plus complète de la chaîne produit."
             ],
         },
         portfolioHeading: { en: "GD Portfolio", fr: "Portfolio GD" },
@@ -58,14 +58,14 @@ export const profiles: Record<Mode, ModeProfile> = {
         bio: {
             fr: [
                 "Bonjour !",
-                "Je suis Laurent Durup, aka Sandalman. Après 10+ ans comme Senior Game Designer Free-to-Play Mobile, je suis aujourd'hui développeur web full-stack, en recherche de mon premier poste.",
-                "Ce changement n'efface pas l'expérience précédente, il la complète : j'apporte une vision produit, une sensibilité UX et une capacité de collaboration transverse forgées sur des années de projets live, à un profil technique encore junior mais solide et en progression rapide.",
+                "Je suis Laurent Durup, aka Sandalman, développeur web full-stack avec 10+ ans de background comme Senior Game Designer Free-to-Play Mobile.",
+                "Ce background n'est pas un détour, il est un atout : j'apporte une vision produit, une sensibilité UX et une capacité de collaboration transverse forgées sur des années de projets live, à un profil technique encore junior mais solide et en progression rapide.",
                 "Junior sur la technique, senior sur tout le reste.",
             ],
             en: [
                 "Hi!",
-                "I'm Laurent Durup, aka Sandalman. After 10+ years as a Senior Game Designer in Free-to-Play Mobile, I'm now a full-stack web developer, looking for my first role in the field.",
-                "This shift doesn't erase the previous experience — it complements it: I bring product vision, UX sensibility, and cross-functional collaboration skills built over years of live, shipped projects, to a technical profile that's still junior, but solid and improving fast.",
+                "I'm Laurent Durup, aka Sandalman, a full-stack web developer with 10+ years of background as a Senior Game Designer in Free-to-Play Mobile.",
+                "This background isn't a detour, it's an asset: I bring product vision, UX sensibility, and cross-functional collaboration skills built over years of live, shipped projects, to a technical profile that's still junior, but solid and improving fast.",
                 "Junior on the tech, senior on everything else.",
             ],
         },
